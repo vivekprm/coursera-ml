@@ -83,7 +83,7 @@ Imagine that we graph our hypothesis function based on its fields θ<sub>0</sub
 
 We put θ<sub>0</sub> on the x axis and θ<sub>1</sub> on the y axis, with the cost function on the vertical z axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png?expiry=1580169600000&hmac=NmvPelVmbfV2a2ZoLYUNkwsCzRC49TxC3kSPj5QEXF8)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/84abcfbf-29b6-4994-8cdc-0dd3aea4a113)
 
 We will know that we have succeeded when our cost function is at the very bottom of the pits in our graph, i.e. when its value is the minimum. The red arrows show the minimum points in the graph.
 
@@ -94,19 +94,15 @@ For example, the distance between each 'star' in the graph above represents a st
 The gradient descent algorithm is:
 
 repeat until convergence:
-
-```
-θj:=θj − α * ∂/∂θj J(θ0,θ1)
-```
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0376a4d9-793a-4cc8-8a7b-851f6539d3d6)
 
 where
-
 j=0,1 represents the feature index number.
 
 At each iteration j, one should simultaneously update the parameters θ<sub>1</sub>, θ<sub>2</sub>,..., θ<sub>n</sub>. Updating a specific parameter prior to 
 calculating another one on the j(th) iteration would yield to a wrong implementation.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png?expiry=1580169600000&hmac=sfw0cFQa4GFFJLfbKtLNbWDUDEG39lKIOk7mNyhyzF8)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/4cb024f0-88c7-471a-8edf-1cdac952f982)
 
 # Gradient Descent Intuition
 We explored the scenario where we used one parameter *θ*1 and plotted its cost function to implement a gradient descent. Our formula for a single parameter was :
