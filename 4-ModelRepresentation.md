@@ -5,7 +5,7 @@ Our first learning algorithm will be **Linear Regression**.
 It's a Linear Regression Problem. We need a set of training set data to make predictions:
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1f1bf1f8-afa3-4bcc-879b-feeca6d9b043)
 
-To establish notation for future use, we’ll use x<sub>(i)</sub> to denote the “input” variables (living area in this example), also called input features, 
+To establish notation for future use, we’ll use x<sup>(i)</sup> to denote the “input” variables (living area in this example), also called input features, 
 and *y*(*i*) to denote the “output” or target variable that we are trying to predict (price).
 
 A pair **(*x*(*i*),*y*(*i*))** is called a training example, and the dataset that we’ll be using to learn—a list of **m training examples**(x(i),y(i)); i=1,…,m — is called a training set.
