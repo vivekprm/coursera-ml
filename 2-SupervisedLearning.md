@@ -1,6 +1,6 @@
-# Example 1: Suppose we want to predict housing prices**
+# Example 1: Suppose we want to predict housing prices
 
-![](:/6b7b06f404665ca4104d23553d8e7422)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6d5d33b6-0219-454a-afc2-800cceae23a6)
 
 Suppose user wants to sell a house of area, 750 square feet, What should be the best prices he should get. How machine learning algorithm can help us? If we put a 
 straight line through the data set we get approximate price of 150k $. But may be that’s not the only learning algorithm we can use.
@@ -11,20 +11,20 @@ we gave the data set with right answer to our algorithm and task of the algorith
 **This is also called a Regression problem** i.e. we are trying to predict continuous value output.
 
 # Example 2: Suppose by looking at the medical record we want to predict whether a breast cancer is malignant or benign.
-![](:/7458656fe02637ecee017da4b3b395ab)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/15feee06-c31f-489f-b95f-b60bcc6ef367)
 
 Suppose in somebody’s record tutor size is as represented above with pink arrow. We want to predict whether it’s malignant or benign? It’s basically a classification 
 problem where we are trying to predict 0 or 1.
 
 Another way of representing this data set is showing it on a single line with different symbol.
 In other machine learning model me may have more than one feature. E.g. lets say with tumor size we have age of the patient having cancer:
-![image.png](:/97a0937aa741fd742589a4e9385357ac)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6eef6c46-388a-4ed7-9a7b-fdf131ccdbaf)
 
 In the picture above red cross shows benign tumor and blue circles shows malignant. Lets say a patient have tumor size and age as shown with pink dot in below 
 picture, predict whether it's benign or malignant.
 
 Here algorithm tries to draw a boundary to separate malignant with benign in best possible manner...
-![image.png](:/8ec5f1810bea92d0bdb53c647cb560aa)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/98cfd236-93a0-44a1-9bae-9b5bcf1d772b)
 
 So in this case our data belong to benign side. In other problems we can have more features. E.g. we can modify this problem and use below features:
 - Clump thickness
