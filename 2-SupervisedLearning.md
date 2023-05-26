@@ -51,5 +51,5 @@ We could turn this example into a classification problem by instead making our o
 we are classifying the houses based on price into two discrete categories.
 
 ## Example 2
-(a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture.
-(b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
+- (a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture.
+- (b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
