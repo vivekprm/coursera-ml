@@ -35,20 +35,20 @@ Minimize (h<sub>𝛉</sub>(x) -y)<sup>2</sup> for 𝛉<sub>0</sub>, 𝛉<sub>1</
 
 Which is the cost function:
                    
-J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x<sup>i</sup>) - y<sup>i</sup>)<sup>2</sup> , where 1 < i < m
+J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x<sup>i</sup>) - y<sup>i</sup>)<sup>2</sup> , where 1 <= i <= m
                                       
 Minimize J(𝛉<sub>0</sub>, 𝛉<sub>1</sub>). Cost function is also called squared error function.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67766bbf-e67a-4901-92ba-40a26696c947)
 
 # Cost Function Institution 1
-If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by h𝛉(x)) which passes through these scattered data points.
+If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by h<sub>𝛉</sub>(x)) which passes through these scattered data points.
 
-Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of J(*θ*0,*θ*1) will be 0. The following example shows the ideal situation where we have a cost function of 0.
+Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of J(θ<sub>0</sub>, θ<sub>1</sub>) will be 0. The following example shows the ideal situation where we have a cost function of 0.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/_B8TJZtREea33w76dwnDIg_3e3d4433e32478f8df446d0b6da26c27_Screenshot-2016-10-26-00.57.56.png?expiry=1579996800000&hmac=nmFpqdBk2bzPYeWDf3HStcoffC1rQGYk51Be3mohIps)
 
-When *θ*1=1, we get a slope of 1 which goes through every single data point in our model. Conversely, when *θ*1=0.5, we see the vertical distance from our fit to the data points increase.
+When θ<sub>1</sub> = 1, we get a slope of 1 which goes through every single data point in our model. Conversely, when θ<sub>1</sub> = 0.5, we see the vertical distance from our fit to the data points increase.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/8guexptSEeanbxIMvDC87g_3d86874dfd37b8e3c53c9f6cfa94676c_Screenshot-2016-10-26-01.03.07.png?expiry=1579996800000&hmac=qF6W-KNAxUxypvNfSQkk_DB5wPhLpvm0OJOrk_exp6g)
 
@@ -56,30 +56,29 @@ This increases our cost function to 0.58. Plotting several other points yields t
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/fph0S5tTEeajtg5TyD0vYA_9b28bdfeb34b2d4914d0b64903735cf1_Screenshot-2016-10-26-01.09.05.png?expiry=1579996800000&hmac=ScPtXbdHURQm1RqnblLIiOe4n3Cx80BtZWpiU1GCDqI)
 
-Thus as a goal, we should try to minimize the cost function. In this case, *θ*1=1 is our global minimum.
+Thus as a goal, we should try to minimize the cost function. In this case, θ<sub>1</sub> = 1 is our global minimum.
 
 ## Cost Function - Intuition II
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/N2oKYp2wEeaVChLw2Vaaug_d4d1c5b1c90578b32a6672e3b7e4b3a4_Screenshot-2016-10-29-01.14.37.png?expiry=1579996800000&hmac=HwUxuv1cO7rQxn2evVl5ZYrfhG60DgnZL25tafM7u-Y)
 
-Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for J(*θ*0,*θ*1) and as a result, they are found along the same line. The circled x displays the value of the cost function for the graph on the left when *θ*0 = 800 and *θ*1= -0.15. Taking another h(x) and plotting its contour plot, one gets the following graphs:
+Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for J(θ<sub>0</sub>, θ<sub>1</sub>) and as a result, they are found along the same line. The circled x displays the value of the cost function for the graph on the left when θ<sub>0</sub> = 800 and θ<sub>1</sub> = -0.15. Taking another h(x) and plotting its contour plot, one gets the following graphs:
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/26RZhJ34EeaiZBL80Yza_A_0f38a99c8ceb8aa5b90a5f12136fdf43_Screenshot-2016-10-29-01.14.57.png?expiry=1579996800000&hmac=7HjvlqtpXxG1V5BpzS2zgxCwKN7Z7iihWQkFxlboyHc)
 
-When *θ*0= 360 and *θ*1 = 0, the value of J(*θ*0,*θ*1) in the contour plot gets closer to the center thus reducing the  cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
+When θ<sub>0</sub> = 360 and θ<sub>1</sub> = 0, the value of J(θ<sub>0</sub>, θ<sub>1</sub>) in the contour plot gets closer to the center thus reducing the cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/hsGgT536Eeai9RKvXdDYag_2a61803b5f4f86d4290b6e878befc44f_Screenshot-2016-10-29-09.59.41.png?expiry=1579996800000&hmac=MjWhr1tGrBX_fXlmjO_yMYIwsPLXEBLuS7s0q41Kewk)
 
-The graph above minimizes the cost function as much as possible and consequently, the result of *θ*1 and *θ*0 tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
+The graph above minimizes the cost function as much as possible and consequently, the result of θ<sub>1</sub> and θ<sub>0</sub> tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
 
 # Gradient Descent
-
 So we have our hypothesis function and we have a way of measuring how well it fits into the data. Now we need to estimate the parameters in the hypothesis function. That's where gradient descent comes in.
 
-Imagine that we graph our hypothesis function based on its fields *θ*0 and *θ*1 (actually we are graphing the cost function as a function of the parameter estimates). We are not graphing x and y itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters.
+Imagine that we graph our hypothesis function based on its fields θ<sub>0</sub> and θ<sub>1</sub> (actually we are graphing the cost function as a function of the parameter estimates). We are not graphing x and y itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters.
 
-We put *θ*0 on the x axis and *θ*1 on the y axis, with the cost function on the vertical z axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.
+We put θ<sub>0</sub> on the x axis and θ<sub>1</sub> on the y axis, with the cost function on the vertical z axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/bn9SyaDIEeav5QpTGIv-Pg_0d06dca3d225f3de8b5a4a7e92254153_Screenshot-2016-11-01-23.48.26.png?expiry=1580169600000&hmac=NmvPelVmbfV2a2ZoLYUNkwsCzRC49TxC3kSPj5QEXF8)
 
@@ -87,13 +86,15 @@ We will know that we have succeeded when our cost function is at the very bottom
 
 The way we do this is by taking the derivative (the tangential line to a function) of our cost function. **The slope of the tangent is the derivative at that point and it will give us a direction to move towards**. We make steps down the cost function** in the direction with the steepest descent**. The size of each step is determined by the parameter α, which is called the learning rate.
 
-For example, the distance between each 'star' in the graph above represents a step determined by our parameter α. A smaller α would result in a smaller step and a larger α results in a larger step. The direction in which the step is taken is determined by the partial derivative of J(*θ*0,*θ*1). Depending on where one starts on the graph, one could end up at different points. The image above shows us two different starting points that end up in two different places.
+For example, the distance between each 'star' in the graph above represents a step determined by our parameter α. A smaller α would result in a smaller step and a larger α results in a larger step. The direction in which the step is taken is determined by the partial derivative of J(θ<sub>0</sub>, θ<sub>1</sub>). Depending on where one starts on the graph, one could end up at different points. The image above shows us two different starting points that end up in two different places.
 
 The gradient descent algorithm is:
 
 repeat until convergence:
 
-**θj:=θj−α * ∂/∂θj J(θ0,θ1)**
+```
+θj:=θj − α * ∂/∂θj J(θ<sub>0</sub>,θ<sub>1</sub>)
+```
 
 where
 
