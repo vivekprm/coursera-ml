@@ -34,10 +34,9 @@ Minimize (h<sub>𝛉</sub>(x) -y)<sup>2</sup> for 𝛉<sub>0</sub>, 𝛉<sub>1</
 Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup>. Should be minimised. Or, 1/2m Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup> should be minimum. Which makes math little easier.
 
 Which is the cost function:
-                                        m
-J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x<sup>i</sup>) - y<sup>i</sup>)<sup>2</sup>
-                                        I = 1
-
+                   
+J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x<sup>i</sup>) - y<sup>i</sup>)<sup>2</sup> , where 1 < i < m
+                                      
 Minimize J(𝛉<sub>0</sub>, 𝛉<sub>1</sub>). Cost function is also called squared error function.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67766bbf-e67a-4901-92ba-40a26696c947)
