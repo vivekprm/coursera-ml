@@ -35,7 +35,7 @@ Minimize (h<sub>𝛉</sub>(x) -y)<sup>2</sup> for 𝛉<sub>0</sub>, 𝛉<sub>1</
 
 Which is the cost function:
                                         m
-J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup>
+J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x<sup>i</sup>) - y<sup>i</sup>)<sup>2</sup>
                                         I = 1
 
 Minimize J(𝛉<sub>0</sub>, 𝛉<sub>1</sub>). Cost function is also called squared error function.
