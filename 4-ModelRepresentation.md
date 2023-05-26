@@ -3,32 +3,31 @@ Our first learning algorithm will be **Linear Regression**.
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/989182a1-eac2-4353-82d3-e96f648e5691)
 
 It's a Linear Regression Problem. We need a set of training set data to make predictions:
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1f1bf1f8-afa3-4bcc-879b-feeca6d9b043)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/948bfa85-56d3-4dd6-abd0-fda3b3328711)
 
-To establish notation for future use, we’ll use x<sup>(i)</sup> to denote the “input” variables (living area in this example), also called input features, 
-and *y*(*i*) to denote the “output” or target variable that we are trying to predict (price).
+To establish notation for future use, we’ll use x<sup>(i)</sup> to denote the "input" variables (living area in this example), also called input features, 
+and y<sup>(i)</sup> to denote the "output" or target variable that we are trying to predict (price).
 
-A pair **(*x*(*i*),*y*(*i*))** is called a training example, and the dataset that we’ll be using to learn—a list of **m training examples**(x(i),y(i)); i=1,…,m — is called a training set.
+A pair (x<sup>(i)</sup>, y<sup>(i)</sup>) is called a training example, and the dataset that we’ll be using to learn—a list of **m training examples**(x(i),y(i)); i=1,…,m — is called a training set.
 
 Note that the superscript “(i)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, X = Y = ℝ.
 
 To describe the supervised learning problem slightly more formally, our goal is, given a training set, to learn a function h : X → Y so that h(x) is a “good” predictor for the corresponding value of y. For historical reasons, this function h is called a hypothesis. Seen pictorially, the process is therefore like this:
 
-![](:/15508a516f0f0a9b3ff8e48e6e2c24aa)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5d96b2b6-14a7-43eb-92e7-9c7b035becfa)
 
 When the target variable that we’re trying to predict is **continuous**, such as in our housing example, **we call the learning problem a regression problem**. When y can take on only a **small number of discrete values** (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a **classification problem**.
 
-**Cost Function**
-
+# Cost Function
 We'll define something called the cost function, **this will let us figure out how to fit the best possible straight line** to our data.
 
-![](:/c5edcd7274ec7816784c233973216966)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/106b67fe-ec9f-4a2b-8fa7-843f7242b546)
 
 Our straight line looks as below for different values of 𝛉0, 𝛉1:
 
-![](:/42c708fa505a3d5f064c12d76ce993de)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8eb73687-84fa-4fed-90cc-95445e4e2744)
 
-Idea: Choose 𝛉0, 𝛉1 such that h𝛉(x) is close to y for our training examples (x, y):
+Idea: Choose 𝛉<sub>0</sub>, 𝛉<sub>1</sub> such that h𝛉(x) is close to y for our training examples (x, y):
 
 Minimize (h𝛉(x) -y)2 for 𝛉0, 𝛉1. For the whole training sets.
 
@@ -45,10 +44,9 @@ J(𝛉0,  𝛉1) = 1/2m Σ (h𝛉(x) -y)2
 
 Minimize J(𝛉0, 𝛉1). Cost function is also called squared error function.
 
-![](:/96ceead7017d776373c17ffde3b39adf)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67766bbf-e67a-4901-92ba-40a26696c947)
 
-**Cost Function Institution 1**
-
+# Cost Function Institution 1
 If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by h𝛉(x)) which passes through these scattered data points.
 
 Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of J(*θ*0,*θ*1) will be 0. The following example shows the ideal situation where we have a cost function of 0.
@@ -65,8 +63,7 @@ This increases our cost function to 0.58. Plotting several other points yields t
 
 Thus as a goal, we should try to minimize the cost function. In this case, *θ*1=1 is our global minimum.
 
-### Cost Function - Intuition II
-
+## Cost Function - Intuition II
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/N2oKYp2wEeaVChLw2Vaaug_d4d1c5b1c90578b32a6672e3b7e4b3a4_Screenshot-2016-10-29-01.14.37.png?expiry=1579996800000&hmac=HwUxuv1cO7rQxn2evVl5ZYrfhG60DgnZL25tafM7u-Y)
