@@ -93,19 +93,19 @@ The gradient descent algorithm is:
 repeat until convergence:
 
 ```
-θj:=θj − α * ∂/∂θj J(θ<sub>0</sub>,θ<sub>1</sub>)
+θj:=θj − α * ∂/∂θj J(θ0,θ1)
 ```
 
 where
 
 j=0,1 represents the feature index number.
 
-At each iteration j, one should simultaneously update the parameters *θ*1,*θ*2,...,*θn*. Updating a specific parameter prior to calculating another one on the *j*(*th*) iteration would yield to a wrong implementation.
+At each iteration j, one should simultaneously update the parameters θ<sub>1</sub>, θ<sub>2</sub>,..., θ<sub>n</sub>. Updating a specific parameter prior to 
+calculating another one on the j(th) iteration would yield to a wrong implementation.
 
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/yr-D1aDMEeai9RKvXdDYag_627e5ab52d5ff941c0fcc741c2b162a0_Screenshot-2016-11-02-00.19.56.png?expiry=1580169600000&hmac=sfw0cFQa4GFFJLfbKtLNbWDUDEG39lKIOk7mNyhyzF8)
 
 # Gradient Descent Intuition
-
 We explored the scenario where we used one parameter *θ*1 and plotted its cost function to implement a gradient descent. Our formula for a single parameter was :
 
 Repeat until convergence:
