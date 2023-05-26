@@ -23,17 +23,15 @@ We'll define something called the cost function, **this will let us figure out h
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/106b67fe-ec9f-4a2b-8fa7-843f7242b546)
 
-Our straight line looks as below for different values of 𝛉0, 𝛉1:
+Our straight line looks as below for different values of 𝛉<sub>0</sub>, 𝛉<sub>1</sub>:
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8eb73687-84fa-4fed-90cc-95445e4e2744)
 
-Idea: Choose 𝛉<sub>0</sub>, 𝛉<sub>1</sub> such that h𝛉(x) is close to y for our training examples (x, y):
+Idea: Choose 𝛉<sub>0</sub>, 𝛉<sub>1</sub> such that h<sub>𝛉</sub>(x) is close to y for our training examples (x, y):
 
-Minimize (h𝛉(x) -y)2 for 𝛉0, 𝛉1. For the whole training sets.
+Minimize (h<sub>𝛉</sub>(x) -y)2 for 𝛉<sub>0</sub>, 𝛉<sub>1</sub>. For the whole training sets.
 
-m                                                                    m
-
-Σ (h𝛉(x) -y)2. Should be minimised. Or, 1/2m Σ (h𝛉(x) -y)2 should be minimum. Which makes math little easier.
+Σ (h<sub>𝛉</sub>(x) - y)2. Should be minimised. Or, 1/2m Σ (h𝛉(x) -y)2 should be minimum. Which makes math little easier.
 
 I=1                                                                 I = 1
 
