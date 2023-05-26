@@ -109,45 +109,39 @@ We explored the scenario where we used one parameter *θ*1 and plotted its cos
 
 Repeat until convergence:
 
-***θ*1:=*θ*1−*α * d/dθ*1*J*(*θ*1)**
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67068232-6560-44d2-8ddf-33e26def4fc8)
 
-Regardless of the slope's sign for *d/dθ*1*J*(*θ*1), *θ*1 eventually converges to its minimum value. The following graph shows that when the slope is negative, the value of *θ*1 increases and when it is positive, the value of *θ*1 decreases.
+Regardless of the slope's sign for d/dθ<sub>1</sub>J(θ<sub>1</sub>), θ<sub>1</sub> eventually converges to its minimum value. The following graph shows that when the slope is negative, the value of θ<sub>1</sub> increases and when it is positive, the value of θ<sub>1</sub> decreases.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/SMSIxKGUEeav5QpTGIv-Pg_ad3404010579ac16068105cfdc8e950a_Screenshot-2016-11-03-00.05.06.png?expiry=1580169600000&hmac=uXi-4psGAJ3DglGtKnDOKNpcJGy81OIa12Q5jFWj0Qk)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e0194406-f8de-48cd-929a-7e7e48861d6d)
 
-On a side note, we should adjust our parameter *α* to ensure that the gradient descent algorithm converges in a reasonable time. Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.
+On a side note, we should adjust our parameter α to ensure that the gradient descent algorithm converges in a reasonable time. Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/UJpiD6GWEeai9RKvXdDYag_3c3ad6625a2a4ec8456f421a2f4daf2e_Screenshot-2016-11-03-00.05.27.png?expiry=1580169600000&hmac=AZMaBe3K8cK60dEhua_2JF3YCP9YDFa2LJm5IQ90fsw)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b818f212-c5ff-4ea2-afb2-6d96c1a60105)
 
-###
 
-### How does gradient descent converge with a fixed step size *α*?
+## How does gradient descent converge with a fixed step size α?
+The intuition behind the convergence is that d/dθ<sub>1</sub>J(θ<sub>1</sub>) approaches 0 as we approach the bottom of our convex function. At the minimum, the derivative will always be 0 and thus we get:
 
-The intuition behind the convergence is that *d*/*dθ*1*J*(*θ*1) approaches 0 as we approach the bottom of our convex function. At the minimum, the derivative will always be 0 and thus we get:
+θ<sub>1</sub> := θ<sub>1</sub> − α * 0
 
-***θ*1:=*θ*1 − *α*∗0**
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/7937fa6b-14db-47cf-af70-eaf16f4cc42d)
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/RDcJ-KGXEeaVChLw2Vaaug_cb782d34d272321e88f202940c36afe9_Screenshot-2016-11-03-00.06.00.png?expiry=1580169600000&hmac=eI2Y3k48Knm_0Vndz7i6J2w60mW8f8Lrk8iJX9uIuNw)
-
-### Gradient Descent For Linear Regression
-
+# Gradient Descent For Linear Regression
 When specifically applied to the case of linear regression, a new form of the gradient descent equation can be derived. We can substitute our actual cost function and our actual hypothesis function and modify the equation to :
 
-repeat until convergence: {
-*θ*0 := *θ*0−*α*1*m*∑*i*=1*m*(*hθ*(*xi*)−*yi*)
-*θ*1:= *θ*1−*α*1*m*∑*i*=1*m*((*hθ*(*xi*)−*yi*)*xi*)
-}
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/138d6638-13b6-4c8d-b78c-77d90d933bb6)
 
-where m is the size of the training set, *θ*0 a constant that will be changing simultaneously with *θ*1 and *xi*, *yi  *are values of the given training set (data).
+where m is the size of the training set, θ<sub>0</sub> a constant that will be changing simultaneously with θ<sub>1</sub> and x<sub>i</sub>, y<sub>i</sub> are values of the given training set (data).
 
-Note that we have separated out the two cases for *θj* into separate equations for *θ*0 and *θ*1; and that for *θ*1 we are multiplying *xi  *at the end due to the derivative. The following is a derivation of ∂/∂*θjJ*(*θ*) for a single example :
+Note that we have separated out the two cases for θ<sub>j</sub> into separate equations for θ<sub>0</sub> and θ<sub>1</sub>; and that for θ<sub>1</sub> we are multiplying x<sub>i</sub> at the end due to the derivative. The following is a derivation of ∂/∂θ<sub>j</sub>J(θ) for a single example :
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/QFpooaaaEea7TQ6MHcgMPA_cc3c276df7991b1072b2afb142a78da1_Screenshot-2016-11-09-08.30.54.png?expiry=1580169600000&hmac=AcBdnmYkLl8s6QQhdl9JHWJP3T6AsGATH-K0qsSzHtQ)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/784233bd-0df2-458c-bda6-8697aefdb536)
 
-The point of all this is that** if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate.**
+The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate.
 
 So, this is simply gradient descent on the original cost function J. This method looks at every example in the entire training set on every step, and is called **batch gradient descent**. Note that, while gradient descent can be susceptible to local minima in general, the optimization problem we have posed here for linear regression has only one global, and no other local, optima; thus **gradient descent always converges (assuming the learning rate α is not too large) to the global minimum**. Indeed, J is a convex quadratic function. Here is an example of gradient descent as it is run to minimize a quadratic function.
 
-![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/xAQBlqaaEeawbAp5ByfpEg_24e9420f16fdd758ccb7097788f879e7_Screenshot-2016-11-09-08.36.49.png?expiry=1580169600000&hmac=eF_II4IgAvoWQAD__tjM3045rCNcoDknXB0lZ2aYx6M)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/01457df3-3539-48a5-8bde-d804857826d1)
 
 The ellipses shown above are the contours of a quadratic function. Also shown is the trajectory taken by gradient descent, which was initialized at (48,30). The x’s in the figure (joined by straight lines) mark the successive values of θ that gradient descent went through as it converged to its minimum.
