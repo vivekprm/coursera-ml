@@ -29,18 +29,16 @@ Our straight line looks as below for different values of 𝛉<sub>0</sub>, 𝛉<
 
 Idea: Choose 𝛉<sub>0</sub>, 𝛉<sub>1</sub> such that h<sub>𝛉</sub>(x) is close to y for our training examples (x, y):
 
-Minimize (h<sub>𝛉</sub>(x) -y)2 for 𝛉<sub>0</sub>, 𝛉<sub>1</sub>. For the whole training sets.
+Minimize (h<sub>𝛉</sub>(x) -y)<sup>2</sup> for 𝛉<sub>0</sub>, 𝛉<sub>1</sub>. For the whole training sets.
 
-Σ (h<sub>𝛉</sub>(x) - y)2. Should be minimised. Or, 1/2m Σ (h𝛉(x) -y)2 should be minimum. Which makes math little easier.
-
-I=1                                                                 I = 1
+Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup>. Should be minimised. Or, 1/2m Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup> should be minimum. Which makes math little easier.
 
 Which is the cost function:
-                           m
-J(𝛉0,  𝛉1) = 1/2m Σ (h𝛉(x) -y)2
-                           I = 1
+                                        m
+J(𝛉<sub>0</sub>,  𝛉<sub>1</sub>) = 1/2m Σ (h<sub>𝛉</sub>(x) - y)<sup>2</sup>
+                                        I = 1
 
-Minimize J(𝛉0, 𝛉1). Cost function is also called squared error function.
+Minimize J(𝛉<sub>0</sub>, 𝛉<sub>1</sub>). Cost function is also called squared error function.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67766bbf-e67a-4901-92ba-40a26696c947)
 
