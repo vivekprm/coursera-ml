@@ -54,6 +54,7 @@ This increases our cost function to 0.58. Plotting several other points yields t
 ![](https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/fph0S5tTEeajtg5TyD0vYA_9b28bdfeb34b2d4914d0b64903735cf1_Screenshot-2016-10-26-01.09.05.png?expiry=1579996800000&hmac=ScPtXbdHURQm1RqnblLIiOe4n3Cx80BtZWpiU1GCDqI)
 
 Thus as a goal, we should try to minimize the cost function. In this case, θ<sub>1</sub> = 1 is our global minimum.
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a7c72555-5853-488c-b208-9946b00d1478)
 
 ## Cost Function - Intuition II
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
