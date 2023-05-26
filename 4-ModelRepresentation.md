@@ -45,26 +45,33 @@ Minimize J(𝛉<sub>0</sub>, 𝛉<sub>1</sub>). Cost function is also called sq
 If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by h<sub>𝛉</sub>(x)) which passes through these scattered data points.
 
 Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of J(θ<sub>0</sub>, θ<sub>1</sub>) will be 0. The following example shows the ideal situation where we have a cost function of 0.
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1e6310aa-3eb8-44d3-a0f5-005f4763f59b)
 
 When θ<sub>1</sub> = 1, we get a slope of 1 which goes through every single data point in our model. Conversely, when θ<sub>1</sub> = 0.5, we see the vertical distance from our fit to the data points increase.
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/59124564-18b8-4adb-a9fb-95dc7066572a)
 
 This increases our cost function to 0.58. Plotting several other points yields to the following graph:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e5c1d07f-e580-4218-9aba-2aba8a9c9d95)
 
 Thus as a goal, we should try to minimize the cost function. In this case, θ<sub>1</sub> = 1 is our global minimum.
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a7c72555-5853-488c-b208-9946b00d1478)
 
 ## Cost Function - Intuition II
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example 
 of such a graph is the one to the right below.
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8b8a1714-6016-4d2e-88b2-ea5c7d8d7da9)
 
 Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for J(θ<sub>0</sub>, θ<sub>1</sub>) and as a result, they are found along the same line. The circled x displays the value of the cost function for the graph on the left when θ<sub>0</sub> = 800 and θ<sub>1</sub> = -0.15. Taking another h(x) and plotting its contour plot, one gets the following graphs:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6c3d9896-76cc-4be4-861d-7d32110ebedf)
 
 When θ<sub>0</sub> = 360 and θ<sub>1</sub> = 0, the value of J(θ<sub>0</sub>, θ<sub>1</sub>) in the contour plot gets closer to the center thus reducing the cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6c1d88c9-4324-4703-aa05-345b585699a5)
 
 The graph above minimizes the cost function as much as possible and consequently, the result of θ<sub>1</sub> and θ<sub>0</sub> tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
