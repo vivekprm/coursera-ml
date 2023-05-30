@@ -30,3 +30,30 @@ Gredient descent looks like this:
 let's see how this partial derivative looks like:
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8d285975-0d1e-43e3-b916-2d10837d0407)
 
+Some of the practical tricks to make Gradient Descent work well:
+# Gradient Descent in Practice I - Feature Scaling
+If you have a problem where you have multiple features, if you make sure the features are on similar scale, then Gradient Descent may converge more quickly.
+E.g. x<sub>1</sub> = size (0-2000 feet<sup>2</sup>)
+     x<sub>2</sub> = number of bedrooms (1 - 5)
+     
+If we plot cost function for such function, it will be very long skinny plot.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d921ee48-52ad-4b9f-938d-1150108f065d)
+
+It's going to take much larger time in converging.
+
+In this setting useful thing to do is to scale the features.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/f5e1ba24-0942-4069-b3e2-2b187dcf7aeb)
+
+For feature scaling:
+- Get every feature into approximately a -1 <= x<sub>i</sub> <= 1 range
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/124ff497-83e7-4c3b-9541-72ea3794a603)
+
+## Mean Normalization
+Replace x<sub>i</sub> with x<sub>i</sub> - μ<sub>i</sub> to make features have approximately zero mean (Do not apply to x<sub>0</sub> = 1)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5b61a9de-91bd-4ced-ba69-4f4d8bdf5fbc)
+
+# Gradient Descent in Practice II - Learning Rate
