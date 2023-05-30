@@ -5,11 +5,13 @@ E.g. Instead of size of the house we can have many other features that can be us
 Notation:
 n = number of features, in above case n = 4
 x<sup>(i)</sup> = input (features) of i<sup>th</sup> training example. E.g in this case X<sup>(2)</sup> is:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b1ff073b-27b2-4084-bd16-0366e13f37fd)
 
 x<sub>j</sub><sup>(i)</sup> = value of feature j in i<sup>th</sup> training example. E.g. X<sub>3</sub><sup>(2)</sup> = 2
 
 # Hypothesis
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/15b8666b-4b3e-4468-b336-1f53f2a19d13)
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e828985c-fc85-497a-99de-0176be196f89)
@@ -20,14 +22,17 @@ Remark: Note that for convenience reasons in this course we assume x<sub>0</sub>
 This allows us to do matrix operations with theta and x. Hence making the two vectors 'θ' and x<sup>(i)</sup> match each other element-wise (that is, have the same number of elements: n+1).]
 
 # Gradient Descent for Multiple Variables
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2b83fde3-9b0c-4a2e-a559-1a2cbab94795)
 
 Where X<sub>0</sub> = 1
 
 Gredient descent looks like this:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/19ca596d-5549-472b-a9bf-8b2c215d86ba)
 
 let's see how this partial derivative looks like:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8d285975-0d1e-43e3-b916-2d10837d0407)
 
 Some of the practical tricks to make Gradient Descent work well:
@@ -58,6 +63,7 @@ Replace x<sub>i</sub> with x<sub>i</sub> - μ<sub>i</sub> to make features have 
 
 # Gradient Descent in Practice II - Learning Rate
 Here is the Gradient Descent update rule:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5e77e310-97e1-44dc-a480-e7a22e162644)
 
 - "Debugging" : How to make sure that Gradient Descent is working correctly.
@@ -96,6 +102,7 @@ Depending upon the choice of features that you have, you can have different lear
 Ploynomial Regression allows to use machinery of Linear Regression to fit very complicated, even very non-linear functions.
 
 Let's take the example of predicting the price of the house. Suppose you have two features, the frontage of the house and the depth of the house:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/54bc73b3-b483-4da4-9f57-d6007c515621)
 
 You might build the linear regression model like this:
@@ -117,12 +124,14 @@ Using just one feature, which is land area. So depending upon what insight you m
 
 Closely related to the idea of choosing your features is this idea called, Polynomial Regression. 
 Let's say you have a housing price data set that looks like this:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/623cb312-d730-48a1-a429-2eb16c558b8d)
 
 Then few different models you might fit to this. One thing you could do is fit a quadratic model like this:
-h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> x X + θ<sub>2</sub> x X<sup>2</sup>
+h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> * X + θ<sub>2</sub> * X<sup>2</sup>
 
 And it might give a fit like below:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c1ffea97-b8e7-430c-bb29-9668c3566b59)
 
 But then you might decide that your quadratic model doesn't make sense because of a quadratic function, this function eventually comes back down and well, we don't think housing prices should go down when the size goes up too high.
@@ -130,7 +139,7 @@ But then you might decide that your quadratic model doesn't make sense because o
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e0359825-0814-411b-8e7a-7dadca9e9944)
 
 So then we may be choose a different polynomial model and choose to use instead a cubic function:
-h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> x X + θ<sub>2</sub> x X<sup>2</sup> + θ<sub>3</sub> x X<sup>3</sup>
+h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> * X + θ<sub>2</sub> * X<sup>2</sup> + θ<sub>3</sub> * X<sup>3</sup>
 
 And we might get this sort of fit:
 
@@ -142,6 +151,7 @@ So how do we actually fit a model like this to our data?
 Using the machinery of Multivariate Linear Regression, we can do this with a pretty small modification to our algorithm. 
 
 The form of hypothesis we know how to fit looks like this:
+
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/df25959d-afdd-4441-b2df-761c6f24ef07)
 
 One thing to keep in mind is, if you choose features like this feature scaling becomes increasingly important.
@@ -152,7 +162,3 @@ So, these three features take very different ranges of values and feature scalin
 Just to give you an example, there might be other reasonable choices. E.g.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/67027245-eca7-40d2-859f-c89de840cc61)
-
-
-
-But then you might decide that your quadratic model doesn't make sense because of a quadratic function, this function eventually comes back down and well, we don't think housing prices should go down when the size goes up too high.important.
