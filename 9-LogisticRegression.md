@@ -59,7 +59,79 @@ This is called Sigmoid Function or the Logistic Function. Alternative way of wri
 
 Lastly let's see how Sigmoid function looks like:
 
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2d6e80ca-1a7e-48ae-8193-1dadf27a5e9f)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/be568dd6-0b53-4182-990e-e13cfaccc685)
 
-SO you can see it asymptotes at 1 and 0.
+So, you can see it asymptotes at 1 and 0.
+
+# Interpretation of Hypothesis Output
+h<sub>θ</sub>(x) = estimated probability that y = 1 on input x
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0c027fc3-d947-4025-90c5-712b59230cb5)
+
+Since h<sub>θ</sub>(x) outputs 0.7, Tell patient that there is 70% chance of tumor being malignant.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/296a71e8-c1de-440b-acdd-8d59ae313147)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b2d08f31-d8ce-4b77-aba7-d4c68a2e2b2a)
+
+# Decision Boundary
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3d9d1e77-d286-45e2-ad9e-2dcb02b10249)
+
+From the plot of sigmoid function we can see that g(z) is >= 0.5, whenever z >= 0
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/596f2d5d-c93d-4dc7-b631-c84c56a807cb)
+
+Similarly g(θ<sup>T</sup>x) < 0.5 when θ<sup>T</sup>x < 0
+
+Let's use this to better understand how the hypothesis of logistic regression makes those predictions. Let's suppose we have training set and hypothesis like below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/9034771b-f8f5-4a9f-adae-d4394e920772)
+
+Lets suppose we endup choosing θ<sub>0</sub> = -3, θ<sub>1</sub> = 1 & θ<sub>2</sub> = 1. So our parameter vector is going to be:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/9331302e-0cc6-44b4-90bd-de65d6689aee)
+
+Given this choice of hypothesis parameters, let's try to figure out where a hypothesis would endup predicting y equals 1 and where it will end up predicting 
+y equals 0.
+
+Predict y = 1 if -3 + x<sup>1</sup> + x<Sup>2</sup> >= 0
+
+In this case θ<sup>T</sup>x = -3 + x<sup>1</sup> + x<Sup>2</sup>
+Or x<sup>1</sup> + x<Sup>2</sup> >= 3
+
+So, x<sup>1</sup> + x<Sup>2</sup> = 3 is a line which is called Decision Boundary:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d0d86ace-844e-4470-801a-fecf8764215b)
+
+Now let's look at more complex example. So given a training set like below how can we use Logistic Regression to fit this sort of data?
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/429e7087-ae4d-4e0e-8369-c65b3f54048d)
+
+Let's say our hypothesis looks as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d718914e-ce31-4e01-aef9-bb6b439b3b1e)
+
+Where we have added two extra features, x<sub>1</sub> squared and x<sub>2</sub> squared to my features. So now we have 5 parameters θ<sub>0</sub>, θ<sub>1</sub>,
+θ<sub>2</sub>, θ<sub>3</sub>, θ<sub>4</sub>.
+
+We will see how to choose values of these paramters. But for now Let's say θ<sub>0</sub> = -1, θ<sub>1</sub> = 0,
+θ<sub>2</sub> = 0, θ<sub>3</sub> = 1, θ<sub>4</sub> = 1
+
+So now our parameter vector looks as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/022c6f93-7ce9-4497-8eb1-4aa749b02a77)
+
+And so now we have hypothesis as:
+y = 1 if -1 + x<sub>1</sub><sup>2</sup> + x<sub>2</sub><sup>2</sup> >= 0
+or x<sub>1</sub><sup>2</sup> + x<sub>2</sub><sup>2</sup> >= 1
+
+So in this case Decision Boundary looks like a circle of radius 1.
+
+Decision Boundary is a property, not of the training set but of the hypothesis under the parameters. So long we are given our parameter vector theta that defines the
+Decision Boundary. But the training set is not what we use to define the Decision Boundary.
+The training set may be used to fit the parameters theta (we'll see that later). But once you have the paramters theta, that is what defines the decision boundary.
+
+We can come up with much complex decision boundaries by adding much higer order polynomial terms.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/57fab35e-2f69-491e-a66c-8207c24e73ad)
 
