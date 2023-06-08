@@ -135,3 +135,65 @@ We can come up with much complex decision boundaries by adding much higer order 
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/57fab35e-2f69-491e-a66c-8207c24e73ad)
 
+# Logistic Regression - Cost Function
+Here is the supervised learning problem of fitting logistic regression model
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ca21d08e-53b4-43c8-9659-c8316fd97014)
+
+When we were using Linear Regression we used the following Cost Function:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/36107dac-f800-4121-9967-d4759d560802)
+
+And alternative way of writing this cost function 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8008e767-32fc-404b-b3df-c232c94a3152)
+
+To simplify this equation bit more we can get rid of those superscripts i. Here h<sub>θ</sub>(x) is the prediction and y is actual value.
+
+This cost function worked fine for Linear Regression but here we are interested in Logistic Regression. If we could minimize this cost function J here that will
+work ok. But it turns out that if we use this particular cost function, this would be a non convex function of the parameter's data.
+
+If we take the sigmoid function and replace h<sub>θ</sub>(x) in the cost function we get plot for J(θ) similar to below, with many local minimum:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)
+
+In contrast we would like to have a cost function J(θ) that is convex, so that when we run Gradient Descent we would be guaranteed to descend and converge to 
+the Global minimum.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/7c03fcc1-cd5d-4d3d-bdde-14be52dd3f72)
+
+And the problem with using this cost function is that because of this very non-linear Sigmoid function that appears in place of  h<sub>θ</sub>(x), J(θ) ends up being 
+a non-convex function. So we will comeup with a different Cost Function that is Convex.
+
+Here is the cost function for Logistic Regression
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/658dcbbb-9808-408b-8003-841f7a8fcbda)
+
+It's plot looks like below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b806e9ca-5864-42f9-88ab-3736bc5895f8)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)
+
+This Cost Function has few interesting and desirable properties:
+- If y = 1, h<sub>θ</sub>(x) = 1 i.e. prediction is same as actual value then the Cost = 0. Which is intersection point on the x axis in the graph.
+- As h<sub>θ</sub>(x) -> 0, Cost -> ∞
+  - Captures the intuition that if h<sub>θ</sub>(x) = 0 ( Predict  P(y = 1 | x;θ) = 0), but y = 1. We will penalize learning algorithm by a very large cost if it turned out to be wrong! As we are saying probability of y = 1 is zero  when h<sub>θ</sub>(x) = 0. And if we turned out to be wrong penalty is huge. Cost -> ∞ signifies that.
+
+Now let's look at the plot when y = 0
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/eeec6e7d-244f-4d8f-95e4-8d451c32f18b)
+
+# Simplified Cost Function and Gradient Descent
+Here is our Cost function for Logistic Regression
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5b9ef79b-4e87-4662-bae9-424a195052d1)
+
+Because y is 0 or 1 will comeup with simpler cost function. We can compress above equation into one equation and we will comeup with more convenient cost function.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ddd5dd89-2a14-4621-8ebd-8fbed4cf3349)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)![image](https://github.com/vivekprm/coursera-ml/assets/2403660/89047af5-4e2e-4d6a-9537-2e982fc33996)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)
+
