@@ -196,4 +196,3 @@ Because y is 0 or 1 will comeup with simpler cost function. We can compress abov
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)![image](https://github.com/vivekprm/coursera-ml/assets/2403660/89047af5-4e2e-4d6a-9537-2e982fc33996)
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2b1095f-19fe-4b93-812a-821e79d86f91)
-
