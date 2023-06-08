@@ -212,11 +212,47 @@ function [jVal, gradient] = costFunction(theta)
 end
 ```
 
-Then we can use octave's "fminunc()" optimization algorithm along with the "optimset()" function that creates an object containing the options we want to send to "fminunc()". 
+# Multiclass Classification : One vs All
+Here are some examples:
+- Email Foldering/Tagging: Work, Friends, Family, Hobby
+- Medical Diagrams: Not ill, Cold, Flu
+- Weather: Sunny, Cloudy, Rain, Snow
 
-```
-options = optimset('GradObj', 'on', 'MaxIter', 100);
-initialTheta = zeros(2,1);
-[optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
-```
-We give to the function "fminunc()" our cost function, our initial vector of theta values, and the "options" object that we created beforehand.
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/829183e6-7349-4194-9718-5b308a0c0b94)
+
+How do we get a learning algorithm to work for this setting?
+We can use one-vs-all and make it work for multiclass classification problem. Here is how One-vs-All classification works
+What we are going to do is take a training set and turn this into three separate Binary Classification problem.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/9b7e7ae8-16ac-43cf-9d0a-594bd7aaa195)
+
+In summary we have fit three classifiers i = 1, 2, 3
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/52058e6a-7a2b-4ce4-ab88-158fb6b5fe8b)
+
+In summary, Train a Logistic Regression classifier h<sub>θ</sub><sup>(i)</sup>(x) for each class i to predict the probability that y = i
+On a new input x, to make a prediction, pick the class i that maximizes ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/64633fdf-9de7-4bea-be1b-2d764ebed769)
+
+# Solving The Problem of Overfitting
+Lets look at example of our predicting housing prices with Linear Regression.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3154d2e7-fb45-4ee6-b8ca-a7bccc8426d3)
+
+So last hypothesis fits all the training examples but not very good for hoursing prices as it has very high variance. Second fitting is just right.
+
+Overfitting: If we have too many features, the learned hypothesis may fit the training set very well (J(θ) ~ 0) but fail to generalize to new examples (predict prices on new examples)
+
+Similar thing can be said about Logistic Regression as well. Here is an example
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/796992b8-9d8b-41f6-8dd1-cc847e759df2)
+
+## Addressing Overfitting
+We might have a learning problem which might have lots of features so plotting the hypothesis may not work. If we have lots of features and ery less training data then ovefitting can be a problem. In order to address overfitting we have two main options that we can do:
+
+- Reduce number of features
+  - Manually select which features to keep.
+  - Model Selection algorithm (later in the course)
+    - Algorithm to automatically decide which feature to keep and which to discard
+  - But may be we might need all the feature and all of them are important.
+- Regularization
+  - Keep all the features, but reduce magnitude/values of parameters θ<sub>j</sub>
+  - Works well when we have lot of features, each of which contribute a bit to predicting y.   
