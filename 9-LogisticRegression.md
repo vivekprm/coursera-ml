@@ -256,3 +256,99 @@ We might have a learning problem which might have lots of features so plotting t
 - Regularization
   - Keep all the features, but reduce magnitude/values of parameters θ<sub>j</sub>
   - Works well when we have lot of features, each of which contribute a bit to predicting y.   
+
+# Regularization : Cost Function
+## Intuition
+We see that quadratic function gives pretty good fit to the data. Wereas if you fit to a overly high order polynomial, you end up with a curve that fits the training set very well but doesn't generalize well.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c7a96247-a6a2-4d49-82eb-92e6313e5c1c)
+
+Suppose we penalise and make θ<sub>3</sub>, θ<sub>4</sub> really small.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fa6cc2af-20fe-4e5b-aebc-338d8a8a6933)
+
+Our objective is to minimize this cost function. Now let's add below terms in our cost function:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/63a6603f-4239-439e-bdfb-d2a59269f192)
+
+Now only way to minimize this new cost function is only if θ<sub>3</sub>, θ<sub>4</sub> are small. So to minimize this new cost function θ<sub>3</sub> ~ 0 and θ<sub>4</sub> ~ 0. So we will be basically left with quadratic funtion.
+
+Here is the idea behind Regularization:
+Small values for parameters θ<sub>0</sub>, θ<sub>1</sub>, ...., θ<sub>n</sub>
+- Leads to simpler Hypothesis
+- Less prone to overfitting
+
+Housing
+- Features: x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>,....., x<sub>100</sub>
+- Parameters: 0<sub>0</sub>, 0<sub>1</sub>, 0<sub>2</sub>, ......, 0<sub>100</sub>
+
+So we have set of 100 features it's hard to pick in advance which are the ones that are less likely to be relevant. So we have 101 parameters and we don't know which ones to pick to try to shrink.
+
+So in Regularization what we are going to do is, take our cost function (below for Linear Regression), and modify our cost function to shrink all of our paramters. Because we don't know which one to shrink.
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/328d769f-30c0-4e5c-afc4-4ddae777c242)
+
+So we are going to modify our Cost Function and add a term (Regularization Term) in the end as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6816eacb-2b54-41dd-9a48-a830e3174a40)
+
+Notice that we are not penalizing 0<sub>0</sub>. λ here is called Regularization Parameter, which controls a tradeoff between two different goals:
+- We would like to fit the training data well which is captured by first term.
+- We want to keep the parameters small which is captured by the second term.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/93c969ab-510d-4630-9024-86d5c3b6a197)
+
+In Regularized Linear Regression if λ is set to an extremely large value (perhaps far too large for our problem, say λ = 10<sup>10</sup>. So what will happen, we will end-up penalizing 0<sub>1</sub>, 0<sub>2</sub>, 0<sub>3</sub>, 0<sub>4</sub> and we will endup with all these parameters close to zero. If we do that it's like we are getting rid of these terms in our hypothesis. So we are just left with h<sub>θ</sub>(x) = 0<sub>0</sub>, which is horizontal straight line and this is an example of underfitting.
+
+# Regularized Linear Regression
+So we will take Gradient Descent and Normal Equation and generalize them using Regularization.
+
+## Gradient Descent
+Old equation
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ae889dae-e860-4821-b5dc-d0c77d5421c6)
+
+All we need to do is modify the second equation as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/9a1075cf-5c45-42fe-a496-0c0fdc374dca)
+
+The term (1 - α * (λ/m)) is going to be a number < 1. Because α * (λ/m) is going to be positive. α * (λ/m) < 1 So we are srinking the 0<sub>j</sub> with every iteration. And Second term is exactly the same as in original Gradient Descent.
+
+## Normal Equation with Regularization
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/f3f40da5-dcbd-41c8-87bf-6c728aabd2d0)
+
+### Non-invertability (optional / advanced)
+Suppose m <= n
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/f7d2ba5e-cce2-4283-93a0-3213ead6f386)
+
+Even if X<sup>T</sup>X is non-invertible, regularization makes it invertible so long as λ > 0.
+
+# Regularized Logistic Regression
+We saw that Logistic Regression is prone to overfitting with higher order polynomial like below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e51d12d1-6597-49e7-ab95-b1bf89b2b53c)
+
+Now if we want to modify it and use Regularization all we need to do it add to it following:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e3496f9d-4bff-4577-bfe0-88daaadd41a7)
+
+## Gradient Descent
+Normal gradient descent without regularization
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/41670564-6414-4ebc-bd75-b118ab745bb6)
+
+To use regularization as in Linear Regression modify the second equation as follows
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e991d1e7-6f5f-457e-b25d-9ba81da1222a)
+
+## Advanced Optimization
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d5a5192f-f32c-4cbf-a6b9-69e0287513c7)
+
+With Regularization it looks as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/98ffd981-b17d-4e0e-9f30-8d2e02347b88)
+
+
+
