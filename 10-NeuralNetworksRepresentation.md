@@ -182,7 +182,7 @@ E.g. in pic below θ<sup>(1)</sup> is 4 x 3 dimensional matrix as s<sub>j+1</sub
 ## Forward Propagation: Vectorized Implementation
 Consider this Neural Network:
 
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/42666cab-70af-4602-a2e5-bb89e7f4687e)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/dc33f6dd-398d-46c8-abb3-38312eb8e77e)
 
 Previously we said that sequence of steps that we need in order to compute the output of the hypothesis are the equation above. Now we are going to define some extra terms. We're going to define a new variable z<sub>k</sub><sup>(j)</sup> that encompasses the parameters inside our g function. In our previous example if we replaced by the variable z for all the parameters we would get:
 
