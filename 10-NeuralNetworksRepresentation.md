@@ -196,6 +196,18 @@ And resulting equation will be:
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fe86f029-500f-4858-9abf-ec79ef9b4c9d)
 
+We can think of input layer as activation of Layer 1 a<sup>1</sup>. So now 
+
+z<sup>(2)</sup> = θ<sup>(1)</sup> a<sup>(1)<sup>
+  
+Add extra bias unit as a<sub>0</sub><sup>(2)<sup> = 1. So now a<sup>(2)<sup> is 4 dimensional vector. 
+
+And finally comput actual value of the hypothesis:
+z<sup>(3)</sup> = θ<sup>(2)</sup> a<sup>(2)<sup>
+
+h<sup>θ</sup>(x) = a<sup>(3)<sup> = g(z<sup>(3)<sup>)
+  
+This process of computing h<sup>θ</sup>(x) is also called forward propagation.
 
 More generally:
 
@@ -208,4 +220,32 @@ The vector representation of x and z<sup>j</sup> is:
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8a595c4a-c500-4f7b-a798-75a76123f8a8)
 
 
+## Neural Network Learning it's own features
+This forward propagation view also helps us to understand what Neural Networks might be doing and why they might help us to learn interesting non-linear hypothesis.
+Consider following Neural Network:
 
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/54db2868-f27d-402b-b408-8379cffa2daf)
+
+Let's say we coverup left part of the picture for now. If you look at what's left in this picture. This looks a lot like Logistic Regression  :
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/eba2b840-e017-4318-8083-5e1a6964c9fa)
+
+What this Neural Network is doing, is just like logistic regression, except that rather than using the original features x1, x2, x3 is using these new features a<sub>1</sub><sup>(2)</sup>, a<sub>2</sub><sup>(2)</sup>, a<sub>3</sub><sup>(2)</sup>.
+  
+The cool thing about this is that features a<sub>1</sub><sup>(2)</sup>, a<sub>2</sub><sup>(2)</sup>, a<sub>3</sub><sup>(2)</sup>, they themselves are learned as functions of the input. Concretely the function mapping from Layer1 to Layer2 that is determined by some other set of parameters Θ<sup(1)</sup>. So as if the Neural Network, instead of being constrained to feed the features x1, x2, x3 to Logistic Regression. It gets to learn it's own features a<sub>1</sub><sup>(2)</sup>, a<sub>2</sub><sup>(2)</sup>, a<sub>3</sub><sup>(2)</sup> to feed into the Logistic Regression and as you can imagine depending upon what parameters it chooses for Θ<sup(1)</sup>, you can learn some pretty interesting and complex features and therefore you can end up with a better hypothesis than if you were constrained to use the raw features x1, x2, x3 or if you were constrained to say choose the polynomial terms x1x2, x2x3, .. and so on. 
+
+But instead this algorithm has the flexibility to try to learn whatever features at once using these a1, a2, a3 in order to feed in to this last unit that's essentially a Logistic Regression unit.
+
+# Other Network Architecture
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ec62ab73-9a7e-4462-aa68-ee2c0b06a36e)
+
+You can have different types of Neural Network diagrams. And the way Neural Networks are connected is called Architecture.
+  
+Consider below Neural Network:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/db101d4c-792e-4fa2-a493-535a4022f41e)
+
+Let a<sup>(1)</sup> = x belongs to R<sup>n+1</sup> denote the input (with a<sub>0</sub><sup>(1)</sup> = 1). How would you compute a<sup>(2)</sup>?
+Ans: ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/71fb3667-7480-4acc-aa3e-87c03d2eab31)
+
+  
