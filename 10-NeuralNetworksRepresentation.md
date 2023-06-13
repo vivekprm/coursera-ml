@@ -186,6 +186,17 @@ Previously we said that sequence of steps that we need in order to compute the o
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2c4d5c5-77fd-4239-94c2-10abffba422c)
 
+In our case x and z<sup>(2)</sup> will be:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5966eff8-4249-4599-ad67-1d9d7d6c9a0b)
+
+And resulting equation will be:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fe86f029-500f-4858-9abf-ec79ef9b4c9d)
+
+
+More generally:
+
 In other words, for layer j=2 and node k, the variable z will be:
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2556c9d0-9515-43b6-92cc-52b587bcae05)
