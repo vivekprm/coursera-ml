@@ -123,5 +123,76 @@ Because of this and other similar experiments (these are called Neuro Rewiring e
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3c8130d7-54f5-415b-afdf-b2eb22cb657b)
 
 # Model Representation I
+Neural Networks were developed as simulating neurons or networks of neurons in the brain. Below is a single nuron:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/793e1825-2c4c-4fa3-b86a-742457045660)
+
+Our brain is jam packed full of neurons like these and neurons are cells in the brain. Neuron has a Cell body and neurons have number of input wires and these are called the "dendrites". You think of them as input wires and these receive inputs from other locations. Neurons also have output wire called "Axons". These are used to send signals to other neurons.
+
+The way that neurons communicate with each other is with little pulses of electricity, they are also called Spikes but that just means pulse of electicity.
+
+## Neuron Model: Logistic Unit
+In a neuro network, or rather, in an artificial neuron network that we've implemented on the computer, we are going to use a very simple model of what a Neuron does. We're going to model a Neuron as just a logistic unit:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c26bde40-a5a0-4d06-bc43-14215b55bdf8)
+
+Yellow circle in the pic above is analogous to the body of Neuron. We then feed the Neuron few inputs analogous to dendrites. Neuron does some computation and outputs some value in this case h(θ) similar to Axons.
+
+So this diagram or model represents:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/4fc467c7-9508-49e5-b6f2-451195e0861a)
+
+Where as usual, x and θ are our parameter vectors.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/72c76e6c-26b5-4a79-a882-d1d22449d153)
+
+So this is very simple, may be a vastly oversimplified model of the computations that the Neuron does, where it gets a number of inputs x1, x2 & x3 and it outputs some value computed like so (in this case h(θ)).
+
+In this case we have only drawn x1, x2 and x3 inputs. Sometimes we draw additional input x0 also called "Biased Unit" or the "Bias Neuron" but because x0 is already equal to one sometimes we draw sometimes we don't depending on whatever is more notationally convenient. 
+
+Sometimes we will say that this is an Artificial Neuron with a Sigmoid or Logistic Activation Function. We keep continuing saying θ as prameters of the model but sometimes people also refer it as Weight of the Model.
+
+This little diagram (see above) represents a single Neuron. What a Neural Network is, is just a group of these different Neurons strung together.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a25f83e4-fc48-45ea-b3af-2942515ba740)
+
+Here we have input units x1, x2, x3 and here we have three Neurons which we have written a<sub>1</sub><sup(2)</sup>, a<sub>2</sub><sup(2)</sup>, a<sub>3</sub><sup(2)</sup>. We can also add a Bias Unit a<sub>0</sub><sup(2)</sup> which always outputs one. And finally we have third node at the final layer and this is the third node that outputs the value that the hypothesis h(x) computes.
+
+First layer in Neural Network is also called "Input Layer". The final layer (layer 3 in this case) is also called the "Output Layer". Layer 2 in between is also called "Hidden Layer". Neural Networks can have more than one Hidden Layer.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/026de983-9412-4c42-8ba3-d3cad233d01c)
+
+To explain specific computations represented by a Neural Network. Here is bit more notation:
+
+a<sub>1</sub><sup>(j)</sup> = "activation" of unit i in layer j
+θ<sup>(j)</sup> = Matrix of weights controlling function mapping from layer j to layer j+1
+
+So here are the computations represented by the above diagram:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6e248941-0cf3-4ca8-8c77-36c99be62835)
+
+So in this case θ<sup>(1)</sup> will be 3x4 dimension matrix. And more generally:
+
+If a network has s<sub>j</sub> units in layer j and s<sub>j+1</sub> units in layer j+1, then θ<sup>(j)</sup> will be of dimension s<sub>j+1</sub>xs<sub>j</sub>+1
+E.g. in pic below θ<sup>(1)</sup> is 4 x 3 dimensional matrix as s<sub>j+1</sub> = 4 and s<sub>j</sub> = 2
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d7ec5479-aae4-49cf-8ab9-f62841c3d3f6)
+
+# Model Representation II
+## Forward Propagation: Vectorized Implementation
+Consider this Neural Network:
+
+Previously we said that sequence of steps that we need in order to compute the output of the hypothesis are the equation above. Now we are going to define some extra terms. We're going to define a new variable z<sub>k</sub><sup>(j)</sup> that encompasses the parameters inside our g function. In our previous example if we replaced by the variable z for all the parameters we would get:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c2c4d5c5-77fd-4239-94c2-10abffba422c)
+
+In other words, for layer j=2 and node k, the variable z will be:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2556c9d0-9515-43b6-92cc-52b587bcae05)
+
+The vector representation of x and z<sup>j</sup> is:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/8a595c4a-c500-4f7b-a798-75a76123f8a8)
+
 
 
