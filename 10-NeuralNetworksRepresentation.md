@@ -188,7 +188,7 @@ Previously we said that sequence of steps that we need in order to compute the o
 
 In our case x and z<sup>(2)</sup> will be:
 
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5966eff8-4249-4599-ad67-1d9d7d6c9a0b)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ae9dfb00-5419-4e30-aadb-a699904112fa)
 
 And resulting equation will be:
 
