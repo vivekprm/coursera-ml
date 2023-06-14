@@ -248,4 +248,58 @@ Consider below Neural Network:
 Let a<sup>(1)</sup> = x belongs to R<sup>n+1</sup> denote the input (with a<sub>0</sub><sup>(1)</sup> = 1). How would you compute a<sup>(2)</sup>?
 Ans: ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/71fb3667-7480-4acc-aa3e-87c03d2eab31)
 
-  
+# Examples & Intuitions I
+## Non-linear classification Example: XOR/XNOR
+Consider the following example where we have features X1 and X2 that are binary values. In this case we have two positive examples and two negative examples. You can think of it as a simplified version of a more complex learning problem. 
+
+And what we would like to do is learn a non-linear division of boundary that may need to separate the positive and negative examples.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/30fa61bc-00aa-40e6-b5eb-d779a1189ad6)
+
+So how can a Neural Network do this and rather than using the example and variable to use this may be easier to examine example on the left. Concretely, what it is really computing the type of label:
+
+y = x1 XOR x2
+    X1 XNOR x2
+    NOT (x1 XOR x2)
+
+So we are going to have positive examples of either both are true or both are false and we have y = 0 when only one of them is true.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/7e9a275d-8ab4-4eae-af98-2299c967a23c)
+
+We are going to figure out if we can get a Neural Network to fit to this sort of training set.
+
+In order to build up to a network that fits the XNOR example we're going to start with a slightly simpler one and show a network that fits the AND function.
+
+## Simple Example: And 
+Concretely, let's say we have input x1 and x2 that are again binaries and let's say our target labels y = x1 AND x2 i.e. logical AND
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1ee53a42-00a2-4acb-bc78-e11bf26710dd)
+
+So, can we get a one unit network to compute this Logical AND function?
+
+In order to do so we are also going to draw the Bias Unit. Let's assign some values to the Weights or parameters of this Network.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b06aa8bc-f7b0-41e2-beb4-6c183251e4b3)
+
+So now our hypothesis looks like below:
+
+h<sub>θ</sub>(x) = g(-30 + 20 x x1 + 20 x x2)
+
+θ<sub>10</sub><sup>(1)</sup> = -30
+θ<sub>11</sub><sup>(1)</sup> = 20
+θ<sub>12</sub><sup>(1)</sup> = 20
+
+Lets look at what this little single Neuron will compute. Just to remind this is how sigmoid function looks like:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/44335c20-4882-4982-adf5-9543d093ab58)
+
+Hypothesis result looks as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/cb361988-035b-476e-b33d-747bcd34d124)
+
+And if you look at the hypothesis result it's computing the AND function.
+
+## Example: OR Function
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0041f6c8-122f-4b1e-bf6f-29f57a421a37)
+
