@@ -303,3 +303,28 @@ And if you look at the hypothesis result it's computing the AND function.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0041f6c8-122f-4b1e-bf6f-29f57a421a37)
 
+
+# Examples and Intuitions II
+We can also have networks to compute negation.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3603ec3a-dabf-4e47-b921-4dc4f653ac64)
+
+So idea is put large negative weight in front of x1.
+
+Putting it together : x1 XNOR x2
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a1d1cff2-307e-445e-afb6-f0594edb04f5)
+
+E.g. Handwritten digit classification by Yann LeCun
+
+# Multiclass Classification
+Handwritten digit classification problem is actually Multiclass Classification Problem because there were ten possible categories for recognizing the digits from 0 through 9.
+
+The way we do Multiclass Classification in a Neural Network is essentially an extension of One-vs-All method.
+
+## Multiple Output Units: One-vs-all
+Let's say we have a computer vision example where instead of just trying to recognize cars, we are trying to recognize 4 categories of objects (Padestrian, Car, Motorcycle, Truck).
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/dbd4489c-4dbf-4657-b992-d5e94a072642)
+
+We will build a Neural Network with 4 output units so that our Neural Network now outputs a vector of four numbers. First output unit is going to classify if the image is Padestrian. 2nd one classify Cars and so on.
