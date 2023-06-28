@@ -1,4 +1,4 @@
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c93ea8d6-c742-43ee-a49b-0ed56d80c573)# Deciding What to try Next
+# Deciding What to try Next
 Suppose you are developing a Machine Learning System or trying to improve the performance of a Machine Learning System, how do you go about deciding what are the promising avenues to try next. To explain this let's continue our example of learning to predict housing prices and let's say you implemented Regularized Linear Regression.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ff0e17fa-5c66-4b01-96d1-a977af0e0b74)
