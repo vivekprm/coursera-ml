@@ -77,3 +77,28 @@ So it's as if there is one extra parameter in this algorithm denoted by d which 
 What you could do is: take your first model and minimize the training error and this will give you some parameter vector theta (θ<sup>(1)</sup>) and then you could take your second model and get some other parameter vector theta (θ<sup>(2)</sup>) and so on.
 
 Then we take these parameters and look at the test errors J<sub>test</sub>(θ<sup>(1)</sup>), J<sub>test</sub>(θ<sup>(2)</sup>) and so on. Now omne thing we could do then  is, in order to select one of these models, we could then see which model has lowest test set error.
+
+Let's just say for this example we ended up choosing the fifth order polynomial. So this seems reasonable so far. But now let's say I want to take my fifth hypothesis and let's say I want to ask How well does this model generalize?
+
+One thing we could do is look at how well our fifth order polynomial hypothesis had done on my test set i.e. J<sub>test</sub>(θ<sup>(5)</sup>)
+
+But the problem is this will not be a fair estimate of how well my hypothesis generalizes and the reason is what we've done is we've fit this extra parameter d that is degree of polynomial and we have fit that parameter d using the test set, namely we chose the value of d that gave us the best possible performance on the test set and so the performance of my parameter vector θ<sup>(5)</sup>, on the test set is likely to be an overly optimistic estimate of generalization error.
+
+To address this problem in model selection setting if we want to evaluate a hypothesis, this is what we usually do instead. Given a dataset instead of just splitting into training, test set  what we are going to do is split it into three parts First part is going to be called training set, second part is called cross validation set 
+and the last part is called usual test set. 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a35f9e60-b82e-42e5-8af5-e3b5e5fb48b3)
+
+Pretty typical ratio at which to split these things will be 60%, 20%, 20%. These numbers can vary a little bit.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/060b220b-b8d2-46bc-8d10-d06786a92700)
+
+So now that we've defined training, validation and test set, We can also define the training error, cross validation error, and test error as below:We can also define the training error, cross validation error, and test error as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/923a65ca-df98-480c-9f4e-f8a12321b2e5)
+
+So when facedwith a model selection problem like this, what we are going to do is, instead of using the test set to select the model, we're instead going to use the cross validation set to select the model. And we are going to pick the hypothesis with lowest cross validation error.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/53aff99b-2012-43be-bd29-d67866a25b74)
+
+Let's say in our case 4th model was with lowest cross validation error.
