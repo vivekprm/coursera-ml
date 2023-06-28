@@ -101,4 +101,4 @@ So when facedwith a model selection problem like this, what we are going to do i
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/53aff99b-2012-43be-bd29-d67866a25b74)
 
-Let's say in our case 4th model was with lowest cross validation error.
+Let's say in our case 4th model was with lowest cross validation error. Now we estimate generalization error using test set.
