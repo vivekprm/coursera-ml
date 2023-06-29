@@ -58,3 +58,5 @@ Last thing that we want to understand is how cross validation and training error
 For small values of λ regularisation term goes away. So when λ is small you end up with small value of J<sub>train</sub>(θ). Wereas if lambda is large then you havve high bias problem and you might not fit your training set well. So J<sub>train</sub>(θ) increases with increase in λ.
 
 If we have large value of λ we may endup underfitting so we may have high bias problem and so cross validation errors will be high. However, if we have smaller value of λ we may be overfitting the data and so again cross validation errors will be high.
+
+And so it will be some intermediate value of λ that works best in terms of having small cross validation error and test error.
