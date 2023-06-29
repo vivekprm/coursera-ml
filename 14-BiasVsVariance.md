@@ -18,3 +18,9 @@ So, the setting of cross-validation error being high belongs to the region with 
 
 # Regularisation and Bias/Variance
 We’ve seen how regularisation can help prevent over-fitting but how does it affect the bias and variances of a learning algorithm?
+
+## Linear Regression with regularization
+Suppose we are fitting a high order polynomial, (like shown below) but to prevent overfitting we need to use regularisation (as shown below)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3906169a-df01-49cc-8ab0-80e2eca2cafd)
+
