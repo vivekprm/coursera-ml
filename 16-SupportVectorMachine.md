@@ -110,3 +110,19 @@ This data is linearly separable, which means there exist many straight lines whi
 SVM corresponds to the black line in the above pic and that seems like a much better decision boundary than the ones in magenta and green. The black line seems like a more robust separator. Mathematically what that does is, this black decision boundary has a larger distance that distance is called margin, denoted with blue lines. We see that the black decision boundary has some larger minimum distance from any of my training examples whereas the magenta and green lines, they come awfully close to the training examples and that seems to do less good job in separating the positive and negative classes than the black line. This distance is called the margin of the SVM and this gives the SVM certain robustness, because it tries to separate the data with as large a margin as possible. 
 
 So the Support Vector Machine is sometimes also called a Large Margin Classifier and this is actually a consequence of the optimisation problem we wrote earlier.
+
+# Large Margin Classifier in presence of outliers
+When C is very large we wrote it as Large Margin classifier. Given a dataset like below, we’ll chose that decision boundary that separates the positive and negative examples on large margin.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6c7cb8e8-5164-41e6-8717-9c69ee1c6862)
+
+SVM is actually slightly more sophisticated than this large margin view might suggest. And in particular if all you are doing is use a large margin classifier then your learning algorithms can be sensitive to outliers.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c302b7c6-3e24-4fb0-8e2a-5ae266461a90)
+
+So let’s just add an extra positive example. If we add one example seems as if to separate the data with large margin may be we endue with decision boundary like below. And it’s really not clear that based on the single outlier based on a single example and it’s really not clear that it’s actually a good idea to change my decision boundary from the black one over to the magenta one.
+
+So if C was very large then this is what SVM will do i.e. change the decision boundary from black to the magenta one but if C was reasonably small then you will still end up with this black decision boundary. 
+And of course if the data were not linearly separable so if you had some positive examples in negative side or if you had some negative examples on positive side like below then also SVM will do the right thing and so this picture of large margin classifier that’s really the picture that gives better intuition only for the case of when the regularisation parameter C is very large. C plays role similar to 1/λ
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3210b2a6-5a0c-4e79-b8ed-c4da887a963b)
