@@ -67,3 +67,46 @@ So the cost function for SVM looks as below:
 # SVM Hypothesis
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/85160207-df11-497f-97de-c93a2c2ab0db)
+
+# SVM: Large Margin Intuition
+Here is the cost function for SVM. On the left we have plotted Cost<sub>1</sub>(z) and on the right Cost<sub>0</sub>(z).
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/4ba2410c-e6af-482b-ac2c-69f439a69c5e)
+
+Now let’s think about what it takes to make these cost functions small:
+If y = 1 then cost<sub>1</sub>(z) is zero only when z >= 1
+If y = 0 then cost<sub>0</sub>(z) is zero only when z <= -1
+
+This is the interesting property of Support Vector Machine, which is that if you have a positive example, so if y = 1, then all we really need is that θ<sup>T</sup>x >= 0 and that would mean that we classify correctly because if θ<sup>T</sup>x >= 0 our hypothesis will predict zero and similarly if you have negative example, what we want is θ<sup>T</sup>x < 0 and that will make sure we got the example right.
+
+But the Support Vector Machine wants a bit more than that. It says, don’t just barely get the example right. So then don’t just have it little bigger than zero. What we really want is for this to be quite a lot bigger than zero. Say may be greater than or equal to 1. And when we want it to be less than 0 we want less than or equal to -1. So this builds in extra safety factor or safety margin factor into the Support Vector Machine.
+
+Logistic Regression does something similar too of course, but let’s see what happens or let’s see consequences of this are in the context of the Support Vector Machine.
+
+Concretely, what we would like to do next is consider a case where we set this constant C (in the cost function) to be a very large value, so let’s imagine we set C to a very large value, may be C = 100,000. Let’s see what Support Vector Machine will do.
+
+# SVM Decision Boundary
+If C is very very large, then when minimising this optimisation objective, we are going to be highly motivated to choose a value so that this first term is equal to zero.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/9963fcfb-9621-4169-a82a-da4cc65336db)
+
+So let’s try to understand the optimisation problem in the context of, what would it take to make this first term in the objective equal to 0 and this should give us additional intuition about what sort of hypothesis a Support Vector Machine learns.
+
+We saw already whenever we have a training example labeled of y<sup>(i)</sup> = 1, if you want to make that first term zero, what you need is to find a value of θ so that θ<sup>T</sup>x<sup>(i)</sup> >= 1. And similarly whenever we have example with y<sup>(i)</sup> = 0, in order to make sure that the cost<sub>0</sub>(z) is zero we need  θ<sup>T</sup>x<sup>(i)</sup> <= -1.
+
+So if we think of optimisation problem as now, really choosing parameters and ensure that this first term is equal to zero. What we are left with is following optimisation problem:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1320994c-47e1-41c5-b69b-be9c51361b91)
+
+It turns out that when you solve this optimisation problem, when you minimise this as a function of the parameters theta you get a very interesting decision boundary.
+
+# SVM Decision Boundary: Linearly separable case
+Concretely, if you look at a data set like below with positive and negative examples :
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2b3b89a7-f5a7-45f1-9c90-dfaae4368d00)
+
+This data is linearly separable, which means there exist many straight lines which can separate positive and negative examples perfectly.
+
+SVM corresponds to the black line in the above pic and that seems like a much better decision boundary than the ones in magenta and green. The black line seems like a more robust separator. Mathematically what that does is, this black decision boundary has a larger distance that distance is called margin, denoted with blue lines. We see that the black decision boundary has some larger minimum distance from any of my training examples whereas the magenta and green lines, they come awfully close to the training examples and that seems to do less good job in separating the positive and negative classes than the black line. This distance is called the margin of the SVM and this gives the SVM certain robustness, because it tries to separate the data with as large a margin as possible. 
+
+So the Support Vector Machine is sometimes also called a Large Margin Classifier and this is actually a consequence of the optimisation problem we wrote earlier.
