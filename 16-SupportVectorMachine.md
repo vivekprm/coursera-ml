@@ -123,6 +123,34 @@ SVM is actually slightly more sophisticated than this large margin view might su
 So let’s just add an extra positive example. If we add one example seems as if to separate the data with large margin may be we endue with decision boundary like below. And it’s really not clear that based on the single outlier based on a single example and it’s really not clear that it’s actually a good idea to change my decision boundary from the black one over to the magenta one.
 
 So if C was very large then this is what SVM will do i.e. change the decision boundary from black to the magenta one but if C was reasonably small then you will still end up with this black decision boundary. 
+
 And of course if the data were not linearly separable so if you had some positive examples in negative side or if you had some negative examples on positive side like below then also SVM will do the right thing and so this picture of large margin classifier that’s really the picture that gives better intuition only for the case of when the regularisation parameter C is very large. C plays role similar to 1/λ
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3210b2a6-5a0c-4e79-b8ed-c4da887a963b)
+
+# SVM - Mathematics Behind Large Margin Classification:
+In order to get started, let us first look at couple of properties of what Vector Inner Product looks like.
+
+## Vector Inner Product
+Let's say we have two 2D vectors u and v that look like as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e9e2c05b-470b-46ba-af55-b2a03c91ffc4)
+
+Then let's see what u<sup>T</sup>v looks like. And u<sup>T</sup>v is also called the inner product of u and v. Vector u can be represented as:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d72ad51b-51d8-43ce-bdb8-8d3eb180687f)
+
+One quantity that will be nice to have is the norm or euclidean length of vector u represented as ||u||, which is equal to √(u<sub>1</sub><sup>2</sup> + u<sub>2</sub><sup>2</sup>) that's a real number.
+
+Now let's look at vector v, it will be some other vector. Now let's look at how to compute inner product between u and v. Here's how you can do it:
+Take the vector v and project it down on vector u and measure the lenght of this red line. Let's call it P.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b30b4e5f-ab01-4050-8003-4155eb96d42b)
+
+P = length of the projection of the vector v on vector u.
+u<sup>T</sup>v = P . ||u|| = u<sub>1</sub> v<sub>1</sub> + u<sub>2</sub> v<sub>2</sub> = v<sup>T</sup>u
+
+So, this is one way to compute the inner product. u<sup>T</sup>v is regular multiplication of two real numbers. One more detail: P is actually signed it's positive if andle between u and v is less than 90 degrees else it's negative.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e619e319-f9eb-4bec-9d89-01adc75c0e46)
+
