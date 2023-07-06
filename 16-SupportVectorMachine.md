@@ -216,3 +216,59 @@ where p<sup>(i)</sup> is the (signed - positive or negative) projection of x<sup
 θ, what is ||θ||?
 
 Ans: 1/2
+
+# Kernels I
+The main technique to develop complex non linear classifier using SVM is something called Kernel.
+
+# Non-linear Decision Boundary
+If you have a training set that looks like this, you want to find a non-linear decision boundary to distinguish the positive and negative examples, may be a decision boundary that looks like in below pic.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/504906a5-e98c-4a93-96c3-45d0b909870d)
+
+One way to do this is to come up with a set of complex polynomial feature like in above pic. So you end up with hypothesis like:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/10de4c4c-9b9a-4142-ae26-4aee2a9d737a)
+
+Another way of writing this, to introduce a little bit of new notation that we will use later, is that we can think of a hypothesis that’s computing a decision boundary using θ<sub>0</sub> + θ<sub>1</sub>f<sub>1</sub> + θ<sub>2</sub>f<sub>2</sub> + … Where we are going to use this new notation f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub> and so on to denote these new sort of features that we are computing.
+
+f<sub>1</sub> = x<sub>1</sub>
+f<sub>2</sub>= x<sub>2</sub>
+f<sub>3</sub> = x<sub>1</sub>x<sub>2</sub>
+f<sub>4</sub> = x<sub>1</sub><sup>2</sup>
+f<sub>5</sub> = x<sub>2</sub><sup>2</sup>
+And so on..
+
+We have seen this previously that coming up with these high order polynomials is one way to comeup with lots more features. But the question is, is there a different choice of features or is there better choice of features than these high order polynomials because you know it’s not clear that this high order polynomial is what we want and when we talked about computer vision we talked about when the input is an image with lots of pixels. We also saw how using high order polynomials becomes very computationally expensive because there is a lot of these higher order polynomial terms.
+
+So is there a different or better choice of features that we can use to plug into this sort of hypothesis form. So here is one idea for how to define new features f1, f2, f3.
+
+On this line we are going to define only three new features, but for real problems we get to define a much larger number.
+
+# Kernel
+In this case  we have features x1 and x2 and we are going to leave x0 out of this, we are going to manually pick few points l<sup>(1)</sup>,  l<sup>(2)</sup> and  l<sup>(3)</sup> and for now let’s say that we are going to choose these three points manually.
+
+Now what we are going to do is define my new features as follows:
+
+Given an example X, let me define my first feature:
+
+f1 = similarity(x, l<sup>(1)</sup>) 
+
+We are going to have a formula to measure similarity.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5c9ae73c-d1ad-4fa1-b3d4-65eea251dbd6)
+
+||x - l<sup>(1)</sup>||<sup>2</sup> is the euclidean distance between the point x and the landmark l<sub>1</sub>
+
+Similarly we can compute f2 and f3.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/26be95be-7624-4006-95aa-afd0d9dfafd2)
+
+And what this similarity function is, the mathematical term for this, is that this is going to be a kernel function. And the specific kernel that I am using here, is actually called a Gaussian Kernel.
+
+So this exponential formula, this particular choice of similarity function is called Gaussian Kernel. But the way terminology goes is that in abstract these different similarity functions are called Kernels and we can have different similarity functions adn the specific example we have here is called Guassian Kernel.
+
+Ans so instead of writing similarity between x and l, sometimes we also write this a kernel denoted as k(x, l<sup>(i)</sup>).
+
+So let's see what these kernels actually do and why these sort of similarity functions might make sense. 
+
+# Kernels & Similarity
