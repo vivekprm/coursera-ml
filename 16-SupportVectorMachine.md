@@ -1,4 +1,4 @@
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/29b42e84-3732-43d7-bd99-35b6875e2d15)![image](https://github.com/vivekprm/coursera-ml/assets/2403660/480ac2dd-2b14-4f70-926b-8bf8eca79b9c)Compared to Logistic Regression and Neural Networks, Support Vector Machine sometimes give cleaner and more powerful way of learning complex non-linear functions.
+Compared to Logistic Regression and Neural Networks, Support Vector Machine sometimes give cleaner and more powerful way of learning complex non-linear functions.
 In order to describe Support Vector Machine, we are actually going to start with Logistic Regression and show how we can modify it a bit, and get what is essentially Support Vector Machine or SVM.
 
 Logistic Regression Hypothesis & Sigmoid Activation Function(right):
