@@ -1,4 +1,4 @@
-Compared to Logistic Regression and Neural Networks, Support Vector Machine sometimes give cleaner and more powerful way of learning complex non-linear functions.
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/29b42e84-3732-43d7-bd99-35b6875e2d15)![image](https://github.com/vivekprm/coursera-ml/assets/2403660/480ac2dd-2b14-4f70-926b-8bf8eca79b9c)Compared to Logistic Regression and Neural Networks, Support Vector Machine sometimes give cleaner and more powerful way of learning complex non-linear functions.
 In order to describe Support Vector Machine, we are actually going to start with Logistic Regression and show how we can modify it a bit, and get what is essentially Support Vector Machine or SVM.
 
 Logistic Regression Hypothesis & Sigmoid Activation Function(right):
@@ -154,3 +154,55 @@ So, this is one way to compute the inner product. u<sup>T</sup>v is regular mult
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e619e319-f9eb-4bec-9d89-01adc75c0e46)
 
+So that's how vector innver product works. We are going to use these properties of vector inner product to try to understand the Support Vector Machine optimisation objective.
+
+## SVM Decision Boundary
+Here is the optimisation objective for SVM.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/94c8a2d6-0ac9-49a1-bfb0-cacbfe91ebe5)
+
+We have made one simplification just to make objective easy to analyze. What we are going to do is ignore θ<sub>0</sub> i.e. θ<sub>0</sub> = 0.
+
+To make things easy to plot we are also going to set n the number of features to be equal to 2. So we have only two features. Our optimization objective now becomes 1/2(θ<sub>1</sub><sup>2</sup> + θ<sub>2</sub><sup>2</sup>) which can be rewritten as 1/2(√(θ<sub>1</sub><sup>2</sup> + θ<sub>2</sub><sup>2</sup>)<sup>2</sup>) which is equal to 1/2(||θ||)<sup>2</sup>
+
+So all SVM is doing in the optimisation objective is it's minimizing the squared norm of parameter vector θ.
+
+Now let's look at θ<sup>T</sup>x<sup>(i)</sup> and understand better what they are doing. So given the parameter vector θ and given example x<sup>(i)</sup> what is θ<sup>T</sup>x<sup>(i)</sup> equal to?
+
+Considering the Vector inner product, let's say we have single positive example x<sup>(i)</sup> as below: 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b2e0c7a2-477c-485d-b862-df8f7f9f6b58)
+
+So, θ<sup>T</sup>x<sup>(i)</sup> can be replaced with P<sup>(i)</sup>. ||θ||
+
+So wrtiting that down in our optimization objectiva becomes as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/76b12593-f150-4716-9590-6c29bd727b81)
+
+Now let's consider the training example we have below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b6dc54e6-8647-484a-abaf-992acddd64e0)
+
+Let's see what decision boundary SVM will choose, here is one option.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/79a72ff0-9395-4a3d-9a24-9f44853b4db4)
+
+This is not a very good choice because it has very small margins. This decision boundary comes very close to the training examples. Let's see why support vector mahine will not choose this. 
+
+For this choice of parameters it's possible to show that parameter vector θ is actually at 90 degree to the decision boundary. So that green decision boundary corresponds to a parameter vector θ shown with blue line.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ad4f2508-e0d4-48a4-a1d0-9431cfbafd11)
+
+The simplification θ<sub>0</sub> = 0, means that the decision boundary has to pass through origin. Now let's look at what this implies for the optimisation objective. Let's take the positive example below the x axis, let's consider that as our first example. If we consider the projection of this example over parameter vector θ, we get that little red segment P<sup>(1)</sup> and that's going to be pretty small. 
+
+Similarly if we take x<sub>2</sub> from the negative example it has projection shown with magenta line and it's going to be P<sup>(2)</sup> and it will be a negative number. So what we are finding is these terms P<sup>(i)</sup> are going to be pretty small numbers. For optimization objective we see that P<sup>(i)</sup>. ||θ|| >= 1, that means we need ||θ|| to be very large.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ce1bf6b5-d3e3-44e7-84a8-38acecaa0e8d)
+
+And similarly for negative example P<sup>(2)</sup> . ||θ|| to be <= -1. and we already saw that P<sup>(2)</sup> is going to be pretty small negative number and so only way for P<sup>(2)</sup> . ||θ|| <= -1 to happen ||θ|| has to be large. But what we are doing in the optimisation objective is we are trying to find a setting of parameters where ||θ|| is small, which contradict so this decision boundary doesn't seem in good direction for parameter vector θ.
+
+In contrast, let's look at different decision boundary. Let's say SVM chooses the decision boundary in below pic and we have corresponding parameter vector theta and projections along it:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/21253aa8-3706-4f73-9866-d8f20cc246c1)
+
+Now we see that projections P<sup>(1)</sup> and P<sup>(2)</sup> are bigger now, so ||θ|| can be smaller. Which is why SVM will choose this decision boundary. This is how SVM gives rise to large margin classification effect.
