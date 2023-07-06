@@ -206,3 +206,13 @@ In contrast, let's look at different decision boundary. Let's say SVM chooses th
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/21253aa8-3706-4f73-9866-d8f20cc246c1)
 
 Now we see that projections P<sup>(1)</sup> and P<sup>(2)</sup> are bigger now, so ||θ|| can be smaller. Which is why SVM will choose this decision boundary. This is how SVM gives rise to large margin classification effect.
+
+Question: The SVM optimization problem we used is:
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/c1ad9e32-27ea-49ac-9871-30945f25d135)
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/dd6b5e5f-0c52-4247-8f28-567660857b33)
+
+where p<sup>(i)</sup> is the (signed - positive or negative) projection of x<sup>(i)</sup> onto θ. Consider the training set above. At the optimal value of 
+θ, what is ||θ||?
+
+Ans: 1/2
