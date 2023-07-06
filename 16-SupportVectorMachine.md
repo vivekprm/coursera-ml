@@ -272,3 +272,8 @@ Ans so instead of writing similarity between x and l, sometimes we also write th
 So let's see what these kernels actually do and why these sort of similarity functions might make sense. 
 
 # Kernels & Similarity
+Let's take our first landmark l<sup>(1)</sup>, which is one of those points that we choose on our figure.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1d7e97f2-5dee-4373-bfa4-d085905f8306)
+
+Just to make sure we are on the same page about what the numerator terms is, the numerator can also be written as a sum from j=1 to n of the distance (component-wise distance between the vector x and l. Here are are ignoring x<sub>0</sub>
