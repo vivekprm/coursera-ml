@@ -365,3 +365,59 @@ Well we do that using the SVM learning algorithm and specifically what you do is
 
 However, instead of using θ<sup>T</sup> x<sup>(i)</sup> we are using new feature θ<sup>T</sup> f<sup>(i)</sup> to make a prediction on ith training example.
 By solving this minimization problem you get the parameters for Support Vector Machine.
+
+One last deatils is because this optimization problem we really have n = m features, so regularisation sum can be changed from 1 to m:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/43e67b82-9bc3-4b71-b799-ec94ad69e946)
+
+There is one last mathematical detail from the last sum term in SVM, this term can also be written as θ<sup>T</sup>θ but what most SVM implementations do is actually replace this with θ<sup>T</sup>M θ, where M is a matrix that depends on the kernel you used.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/157a40dd-f033-4d1d-b790-e250854f3a3a)
+
+So instead of minimizing ||θ||<sup>2</sup> we instead minimize something similar to it, that's like a rescale version of the parameter vector θ thaat depends on the kernel. But this is kind of mathematical detail that allows the SVM to run much more efficiently and the reason SVM does this is because with this modification it allows to scale to much bigger training sets. 
+
+Because for example, if you have a training set with 10,000 examples then the way we define landmarks, we end up with 10,000 landmarks and so θ becomes 10,000 dimensional, may be that works but when m becomes really really big then solving for all of these parameters can become expensive for SVM software.
+
+If you are wondering why we didn't apply Kernel's idea to other algorithms like Logistic Regression, it turns out that if you want you can actually apply the Kernel's idea and define the source of features using landmarks and so on for Logistic Regression but the computational tricks that apply for SVM don't generalize well to other algorithms like Logistic Regression and so using kernels with logistic regression is going to be very slow, whereas because of computational tricks, SVM and Kernels tend to go particularly well together, whereas Logistic Regression and Kernels, you know you can do it but this would run very slowly.
+
+One other thing that is worth knowing about is:
+## SVM Parameters
+When you are applying SVM, how do you choose the parameters of the SVM?
+
+When you are using SVM, one of the thing that you have to choose is parameter C which was in the optimisation objective. And C = 1/λ
+
+If you have large value of C this corresponds to small λ, hence we have Lower Bias and High Variance.
+If you have small value of C this corresponds to large λ, hence we have Higher Bias and Lower Variance.
+
+Other parameter that we need to choose is σ<sup>2</sup>, which appeared in the Guassian Kernel. 
+If σ<sup>2</sup> is large: Feature f<sub>i</sub> vary more smoothly and this will give hypothesis with higher bias and lower variance.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/f3ea5bb7-3666-4b39-a1ee-1a0012664217)
+
+In contrast if σ<sup>2</sup> is small: Feature f<sub>i</sub> vary less smoothly and this will give hypothesis with lower bias and higher variance.
+
+## SVMs in Practice
+Use SVM software package (e.g. liblinear, libsvm,...) to solve for parameters θ.
+
+Even though you shouldn't be writing your own SVM optimization software, there are few things that you need to do though:
+- First, is to comeup with some choice of the parameter C.
+- Second, you also need to choose the kernel or the similarity function that you want to use.
+    - One choice might be, we decide not to use any kernel and the idea of no kernel is also called a "linear kernel".
+        - The term linear kernel signifies, it is the version of the SVM that gives you a standard linear classifier. So this would be standard reasonalbe choice for some problems.
+        - Why would you wanna do this?
+            - If you have large number of features, if n is large and m the number of training examples is small, then you have huge number of features already, with a small training set you know, may be you wanna fit just linear decision boundary and not try to fit a very complicated nonlinear function, because you might not have enough data and you might risk overfitting, if you're trying to fit a very complicated function in a very high dimensional feature space but if your training set is small.     
+    - Predict y=1 if θ<sup>T</sup>x >= 0 i.e. θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + ... + θ<sub>n</sub>x<sub>n</sub> >= 0
+ 
+- Second choice of kernel that we might make is, Guassian Kernel
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5864db02-c508-466d-83c4-1b4cb0eb8cba)
+
+If we choose this, then the other choice you need to make is to choose this parameter σ<sup>2</sup>. when would you choose Guassian Kernel?
+If X belongs to R<sup>n</sup> and n is small and m is large, then may be you want a kernel to fit more complex nonlinear deecision boundary and the Gaussian kernel would be a fine way to do this.
+
+If you decide to use Gaussian Kernel hen here is what you need to do.
+
+## Kernel (similarity) functions:
+Depending on what Support Vector Machine software package you use, it may ask you to use kernel function or a similarity function. If you are using octave implementation of SVM, it may ask you to provide a function to compute a particular feature of the Kernel.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ed393860-db62-462d-ba04-2206ee1353c1)
