@@ -217,10 +217,10 @@ where p<sup>(i)</sup> is the (signed - positive or negative) projection of x<sup
 
 Ans: 1/2
 
-# Kernels I
+# SVM: Kernels I
 The main technique to develop complex non linear classifier using SVM is something called Kernel.
 
-# Non-linear Decision Boundary
+## Non-linear Decision Boundary
 If you have a training set that looks like this, you want to find a non-linear decision boundary to distinguish the positive and negative examples, may be a decision boundary that looks like in below pic.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/504906a5-e98c-4a93-96c3-45d0b909870d)
@@ -244,7 +244,7 @@ So is there a different or better choice of features that we can use to plug int
 
 On this line we are going to define only three new features, but for real problems we get to define a much larger number.
 
-# Kernel
+## Kernel
 In this case  we have features x1 and x2 and we are going to leave x0 out of this, we are going to manually pick few points l<sup>(1)</sup>,  l<sup>(2)</sup> and  l<sup>(3)</sup> and for now let’s say that we are going to choose these three points manually.
 
 Now what we are going to do is define my new features as follows:
@@ -271,7 +271,7 @@ Ans so instead of writing similarity between x and l, sometimes we also write th
 
 So let's see what these kernels actually do and why these sort of similarity functions might make sense. 
 
-# Kernels & Similarity
+## Kernels & Similarity
 Let's take our first landmark l<sup>(1)</sup>, which is one of those points that we choose on our figure.
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1d7e97f2-5dee-4373-bfa4-d085905f8306)
@@ -280,3 +280,88 @@ Just to make sure we are on the same page about what the numerator terms is, the
 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/5477e350-a888-4ebb-9e07-82065cfb7989)
 
+So, this is how you compute the Kernel with similarity between X and a landmark. So let's see what this function does.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/58a70f5e-9cf6-4ebc-8359-09911b7890a3)
+
+So what these features do they measure how similar X is from one of your landmarks. And the feature X is going to be close to 1 when X is close to landmark and it's going to be 0 when featue X is far from the landmark.
+
+Each of these landmarks l<sup>(1)</sup>, l<sup>(2)</sup> & l<sup>(3)</sup>, defines a new feature f<sub>1</sub>, f<sub>2</sub> & f<sub>3</sub>.
+
+Given a training example X we can now compute three new features f<sub>1</sub>, f<sub>2</sub> & f<sub>3</sub> given the three landmarks l<sup>(1)</sup>, l<sup>(2)</sup> & l<sup>(3)</sup>.
+
+Let's plot this similarity function and see what it looks like.
+For this example let's say we have two features X1 and X2 and lt's say our first landmark l1 is at below location:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/64a7e8ce-32a3-44ec-8d74-c0eeb68183d0)
+
+The height of the surface is the value of f<sub>1</sub>. 
+
+Now let's look at the effect of varying σ<sup>2</sup>. It's called Guassian Kernel parameter and as you vary it you get slightly different effect. Lets set σ<sup>2</sup> to 0.5 and see what we get. We see that curve looks similar except that the bump becomes narrower.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1f344668-eae4-461e-9bac-e101cd1c5aa1)
+
+As you start from l<sup>(1)</sup> i.e. (3, 5) and move away then the feature f1 falls to 0 more rapidly. And conversely If you were to increase σ<sup>2</sup> = 3 in that case as we move away from l<sup>(1)</sup> f1 falls to zero much more slowly.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a9313c59-ac0c-4628-981d-017984a0479f)
+
+So given this definition of the features let's see what sort of hypothesis we can learn.
+
+Given the training example X we are going to compute these features f1, f2, f3 and hypothesis is going to predict 1 when 
+
+θ<sub>0</sub> + θ<sub>1</sub>f<sub>1</sub> + θ<sub>2</sub>f<sub>2</sub> + θ<sub>3</sub>f<sub>3</sub> >= 0
+
+For this particular example, let's say we already found a learning algorithm and let's say that somehow we ended up with these values of the parameter:
+θ<sub>0</sub> = -0.5, θ<sub>1</sub> = 1, θ<sub>2</sub> = 1, θ<sub>3</sub> = 0
+
+What we want to do is consider what happems if we have a training example that has a location at the magenta dot in below pic. What our hypothesis will predict?
+
+If we look at the forumula θ<sub>0</sub> + θ<sub>1</sub>f<sub>1</sub> + θ<sub>2</sub>f<sub>2</sub> + θ<sub>3</sub>f<sub>3</sub> >= 0 and because our point is close to l<sup>(1)</sup> f1 ~ 1 and because it's far from l2 and l3 f2, f3 ~ 0
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e0265e96-067d-462d-b8ed-762613cadea0)
+
+Now let's take a different point denote in cyan if that was my training example X then f1, f2, f3 ~ 0 so it will be equal to -0.5 so we predict y = 0.
+
+So we can see that points close to l1 and l2 we end up predicting y = 1 and for points for away from l1 and l2 we predict y = 0. SO the decision boundary of this hypothesis will look something like below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ec2a53a6-63a5-48c8-9b81-c7800a5c7520)
+
+# SVM: Kernels II
+## Choosing the Landmarks
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3aa2da5a-1e32-4e8d-8754-5d7948c6ff4e)
+
+How to choose these landmarks l<sup>(1)</sup>, l<sup>(2)</sup> & l<sup>(3)</sup>? 
+
+For complex learning problems, may be we want lot more landmarks than just three of them that we might choose by hand.
+
+In practice this is how the landmarks are chosen, which is that given a Machine Learning problem, we have some data set of some positive and negative examples, for every training example that we have, we are going to put landmark at exactly the same locations as the training examples. If we have first training example X<sup>(1)</sup> we are going to choose first landmark l<sup>(1)</sup> at exactly the same location as our first training example. Similarly choose other landmarks as in below pic:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/1a8284a7-855f-416d-ba2f-b9493b8f9f9b)
+
+It is saying that my features are basically going to measure how close an example is to one of the things that we saw in our training set.
+
+Just to write it down more concretely.
+
+## SVM with Kernels
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/e0d7aff3-5830-4780-aa87-7a9293f57e08)
+
+When you are given an example x, and this example x can be something in the training set, something in the cross-validation set or something in the test set, we are going to compute these features f1, f2, .. and so on:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a3896940-8da0-4a73-9a7f-2856b3a01fe0)
+
+In general: 
+f<sub>i</sub><sup>(i)</sup> = sim(x<sup>(i)</sup>, l<sup>(i)</sup>) where l<sup>(i)</sup> is equal to x<sup>(i)</sup>. 
+
+So f<sub>i</sub><sup>(i)</sup> is going to be similarity between x<sup>(i)</sup> and itself. IF we are using the Guassian Kernel it is equal to exp(-0/(2σ*σ)) = 1
+
+So, given these kernels and similarity functions, here is how we use Support Vector Machine. If you already have a learned set of parameters θ, then if you are given a value of x and you want to make a prediction, what we do is we compute the features f which is R<sup>m+1</sup> dimensional feature vector. What we do is then, we predict y = 1 if θ<sup>T</sup> f >= 0  which is same as θ<sub>0</sub> f<sub>0</sub> + θ<sub>1</sub> f<sub>1</sub> + ... + θ<sub>m</sub> f<sub>m</sub> >= 0
+
+If you already have a setting for parameters theta. How do you get the parameters theta? 
+Well we do that using the SVM learning algorithm and specifically what you do is, you would solve thie minimization problem 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/d647b0dd-58c7-4e1b-ae06-08e7c999f42c)
+
+However, instead of using θ<sup>T</sup> x<sup>(i)</sup> we are using new feature θ<sup>T</sup> f<sup>(i)</sup> to make a prediction on ith training example.
+By solving this minimization problem you get the parameters for Support Vector Machine.
