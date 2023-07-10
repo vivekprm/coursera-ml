@@ -420,4 +420,57 @@ If you decide to use Gaussian Kernel hen here is what you need to do.
 ## Kernel (similarity) functions:
 Depending on what Support Vector Machine software package you use, it may ask you to use kernel function or a similarity function. If you are using octave implementation of SVM, it may ask you to provide a function to compute a particular feature of the Kernel.
 
-![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ed393860-db62-462d-ba04-2206ee1353c1)
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/3bbbf13a-abf3-4c81-967b-d41089e9f835)
+
+So this is really computing f<sub>i</sub> for one particular value of i. f here is just single real number. so it's better to write f<sub>i</sub> rather than f. What you need to do is write a kernel function that takes input a training example or test example whatever, takes in some vector x and takes input as one of the landmarks, we are calling it x2 here because landmarks are really training examples as well.
+
+If you are using Guassian Kernel some SVM implementations will also include Guassian kernel and a few other kernels as well.
+
+Just one implementation note, if you have features of very different scales, it is important to perform feature scaling before using the Guassian kernel. And here is why:
+If you imagine computing the norm between x and l, i.e. ||x - l||<sup>2</sup> 
+
+v = x -l
+||v|| = v<sub>1</sub><sup>2</sup> + v<sub>2</sub><sup>2</sup> + .... +  v<sub>n</sub><sup>2</sup>
+        = (x1-l1)<sup>2</sup> + (x2-l2)<sup>2</sup> + ..... + (xn-ln)<sup>2</sup>
+
+x belongs to R<sup>n</sup> let's ignore x<sub>0</sub>
+
+Now if your features take on very different ranges of value, e.g. if we take the example of housing prices if x1 is size of the room and in range of 1000 feet<sup>2</sup> and x2 number of bedrooms so in range 1-10, x1-l1 is going to be huge, it could be 1000 squared, whereas x2-l2 is going to be much smaller and if that's the case then in ||x-l||<sup>2</sup> will be dominated by (x1-l1)<sup>2</sup>
+
+## Other Choices of Kernel
+When you are applying SVM chances are by far the two most common kernels you use will be the Linear Kernel meaning no kernel or the Guassian Kernel.
+
+Warning: Not all similarity functions similarity(x, l) make valid kernels. (Need to satisfy technical condition called "Mercer's Theorem" to make sure SVM packages optimizations run correctly and do not diverge.
+
+SOme of the other Kernels you may run across:
+- Polynomial Kernel: similarity is defined as k(x, l) = (x<sup>T</sup>l)<sup>2</sup>, (x<sup>T</sup>l)<sup>3</sup>, (x<sup>T</sup>l + 1)<sup>3</sup>
+    - So polynomial kernel has two parameters what number you add to transpose term and what's the degree of polynomial.
+    - Polynomial kernel almost always perform worse and the Guassian kernel doesn't.
+ 
+- Esoteric Kernels: String kernel, chi-square kernel, histogram intersection kernel.
+
+Two last details:
+## 1 Multi-class Classification
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/17c73f79-caf8-4f35-867e-eced0c0e2947)
+
+So you have four classes or more generally K classes how do you get SVM to output some appropriate decision boundary between your multiple classes. Many SVM pacjages already have built-in multiclass classification functionality.
+
+So if you are using a pattern like that, you just use the built-in functionality and that should work fine.
+Otherwise one way to do this is to use One-vs-all method. What you do is, you train K SVM's if you have K classes, one to distinguish y = i from the rest for i = 1,2,..., K, get  θ<sup>(1)</sup>, ..., θ<sup>(K)</sup>. Pick class i with largest ((θ<sup>(i)</sup>))<sup>T</sup>x. It's similar to one vs all method discussed earlier.
+
+For the more common cases, there is a good chance that whatever software package you use, you know, there will be a reasonable chance that already have built-in multiclass classification functionality.
+
+Finally, we developed Support Vector Machines starting off with Logistic Regression and then modifying the Cost Function a little bit but when we will use one of these algorithms?
+
+# Logistic Regression vs. SVMs
+So let's say n = number of features (x belongs to R<sup>n+1</sup>), m = number of training examples. 
+
+- If n is large (relative to m) e.g. text classification problem:
+Use Logistic Regression, or SVM without a Kernel. Because if you have so many features with smaller training set, linear funcion will do fine and you don't have really enough data to fit a very complicated non-linear function.
+
+- Now if n is small (may be 1-1000), m is intermediate (maybe 10-50,000): use SVM with Guassian Kernel
+
+- If n is small (may be 1-1000) and m is large (50,000+): Create/Add more features then use Logistic Regression or SVM without kernel. SVM with Guassian Kernel will be slow on such a large training data.
+
+Neural Network likely to work well for most of these settings but may be slower to train. One reason we don't use Neural Network for some of these problems, is because it migh be slower to train.
