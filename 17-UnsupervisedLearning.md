@@ -66,3 +66,26 @@ One way to do this would be to run k-means clustering algorithm on this dataset 
 ![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fac6a68e-e379-4646-a8b9-379c952b41a0)
 
 This is similar to market segmentation problem.
+
+# K-means Optimization Objective
+While the k means is running we are keeping track of following variables:
+- c<sup>(i)</sup> = index of cluster (1,2,...,K) to which example x<sup>(i)</sup> is currently assigned.
+- µ<sub>k</sub> = cluster centroid k (µ<sub>k</sub> belongs to R<sup>n</sup>)
+
+For k-means we use K to denote the total number of Clusters and here k is going to be an index into the cluster centroids k belongs to {1, 2, 3, ..., K}
+Here is one more notation, which is gonna use:
+µ<sub>c<sup>(i)</sup></sub> = cluster centroid of cluster to which example x<sup>(i)</sup> has been assigned. E.g. let's say x<sup>(i)</sup> -> 5, hence c<sup>(i)</sup> = 5 and hence µ<sub>c<sup>(i)</sup></sub>=µ<sub>5</sub>.
+
+Below is our optimisation objective:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/118a5f3d-aea0-49cd-8798-3b09f261655f)
+
+This Cost Function is sometimes also called Distortion.
+
+To provide more details:
+First step in the above K-means algorithm is Cluster Assignment Step, where we assign each point to Cluster Centroid and it's possible to show mathematically that what the Cluster Assignment step is doing is exactly minimizing J(...) with respect to variables c<sup>(1)</sup>, c<sup>(2)</sup>, ...., c<sup>(m)</sup> while holding the Cluster Centroid µ<sub>1</sub>, ..., µ<sub>k</sub> fixed.
+
+So first step doesn't change the cluster centroid but what it's doing is it's picking the values of c<sup>(1)</sup>, c<sup>(2)</sup>, ...., c<sup>(m)</sup> that minimizes the cost function J.
+
+Second step in the above k-means algorithm is Move Centroid Step and it can be shown mathematically that it chooses the values of µ that minimizes J wrt locations of the cluster centroids µ<sub>1</sub>, ..., µ<sub>k</sub>
+
