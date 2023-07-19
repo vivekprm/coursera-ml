@@ -89,3 +89,55 @@ So first step doesn't change the cluster centroid but what it's doing is it's pi
 
 Second step in the above k-means algorithm is Move Centroid Step and it can be shown mathematically that it chooses the values of µ that minimizes J wrt locations of the cluster centroids µ<sub>1</sub>, ..., µ<sub>k</sub>
 
+# Random Initialization
+We are going to see how we can optimize k-means to avoid local optima. 
+
+One step that we didn't talk about in k-means algorihtm is the first step which is:
+Randomly initialize K cluster centroids µ<sub>1</sub>, ..., µ<sub>k</sub> belongs to R<sup>n</sup>
+
+There are few different ways that one can imagine using to randomly initialize the Cluster Centroid. But it turns out there is one method that is much more recommended than most of the other options.
+
+Here is how we initialize Cluster Centroid:
+- Should have K < m
+- Randomly pick K training examples.
+- Set µ<sub>1</sub>, ..., µ<sub>k</sub> equal to these K examples.
+
+E.g. Let's say K = 2 so in below example we want to find out two Clusters:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/021a3d23-eac4-4715-9217-db4c72917268)
+
+- So we randomly pick two examples depicted with an arrow and initialize our two Cluster Centroid with these.
+
+Here in this case we got lucky but we might have picked centroids as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/2d4a0008-8b16-4038-85b1-bf6380a7574e)
+
+So that's how we can randomly initialize the Cluster Centroids.
+
+Looking at these two illustrations, you might guess that K-means can endup converging to different solutions depending on exactly how the Clusters were initialized and so depending upon the random initialization K-means can endup at different solutions and in particular K-means can actually endup at local optima.
+
+If we have given a data set as below it looks like there are three clusters and if you run k-means and if it ends up at a good local optima you may end up with cluster looking as below:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/aa442ffc-df1a-4930-90ad-417f91dad42a)
+
+But if you are unlucky in random initialisation k-means can also get stuck at different local optima.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/45217fd7-f1a7-4e5f-800e-14faa09f1cb5)
+
+So in the left example it seems blue cluster has captured lots of examples and red and green are capturing relatively small number of points. Similar is the case in the right.
+
+So if you are worried k-means getting stuck in local optima, if you want to increase the odds of k-means finding the best possible clustering, like shown in the above pic, what we can do is, try multiple random initialisations. So instead of just initialising k-means once and hoping that it works, what we can do is, initialise k-means lots of times and use that to try to make sure we get as good a solution, as good a local or global optima as possible. Here is how you can go about doing that:
+
+Let's say we decided to run k-means 100 times.
+
+for i = 1 to 100 {
+  Randomly initialize K-means.
+  Run K-means. Get c<sup>(1)</sup>, c<sup>(2)</sup>, ...., c<sup>(m)</sup>, µ<sub>1</sub>, ..., µ<sub>k</sub>
+  Compute Cost Function (distortion) J(c<sup>(1)</sup>, ...., c<sup>(m)</sup>, µ<sub>1</sub>, ..., µ<sub>k</sub>)
+}
+
+Pick clustering that gave lowest cost J(c<sup>(1)</sup>, ...., c<sup>(m)</sup>, µ<sub>1</sub>, ..., µ<sub>k</sub>).
+
+If K is very large may be 100, so many random initializations may not make a huge difference and there is much higher chance that your first random initialization will give you pretty decent solution already and doing multiple random initializations will probably give slightly better solution but may be not that much.
+
+But if you have small number of clusters may be 2-10 then random initialization may make huge difference.
