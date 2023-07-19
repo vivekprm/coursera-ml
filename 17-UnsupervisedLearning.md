@@ -141,3 +141,33 @@ Pick clustering that gave lowest cost J(c<sup>(1)</sup>, ...., c<sup>(m)</sup>, 
 If K is very large may be 100, so many random initializations may not make a huge difference and there is much higher chance that your first random initialization will give you pretty decent solution already and doing multiple random initializations will probably give slightly better solution but may be not that much.
 
 But if you have small number of clusters may be 2-10 then random initialization may make huge difference.
+
+# Choosing the Number of Clusters
+By far the most common way of choosing the number of clusters, is still choosing it manually by looking at visualization or by looking at the output of the clustering algorithm or something else.
+
+A large part of why it might not always be easy to choose the number of clusters is that, it is often generally ambiguous how many clusters there are in the data. 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0f35878a-e954-437d-87c3-813614233552)
+
+Looking at this dataset some of you may see four clusters and that would suggest using K = 4. Or some of you may see two clusters and that will suggest K = 2. And some other may see three clusters.
+
+So looking at dataset like this, the true number of clusters, it actually seems ambiguous and there is no one right answer and this is part of unsupervised learning. We aren't given labels so there isn't always a clear cut answer and this is one of the things that makes it more difficult to say, have an automatic algorithm for choosing how many clusters to have.
+
+## Choosing the value of K
+When people talk about ways of choosing the number of clusters, one method that people sometimes talk about is called the Elbow Method.
+
+### Elbow Method
+In this method we vary K, which is total number of Clusters. So we are going to run k-means with one cluster and compute the Cost Function and plot that and then we are going to run K-means with two Clusters may be with multiple random initialisations, or may be not. Next run with three clusters and so on and may be we get a curve that looks like this:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0fac9c12-3c92-400c-97d6-0ab9d8713022)
+
+What Elbow Method says is: Lets look at this plot and looks like there is a clear elbow at K=3. So distortion goes down rapidly from 1 -> 3 and then 3 onwards it goes down very slowly after that and so may be using K=3 is the right number of clusters.
+
+If you apply the Elbow method and get a plot as above then that's pretty good and this would be a reasonable way of choosing the number of clusters. It turns out that Elbow method isn't used that often and one reason is that if you actually use this on a Clustering problem, it turns out that fairly often you end up with a curve that looks much more ambiguous, may be something like this:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/b0acecb9-b720-43d0-a834-629f9acc0f11)
+
+And if you look at this there is no clear elbow. So it makes it harder to choose number of cluster using this method in such cases.
+
+Finally here is one other way of thinking about how you choose the value of K. 
+Very often people are running k-means in order to get clusters for some later purpose or for some sort of downstream purpose. May be we want to use K-means in order to do Market Segmentation like in the t-shirt sizing example. May be you want k-means to organize a computer cluster    
