@@ -228,3 +228,49 @@ If you plot these features, here is what you might find. Here very country is re
 You might find that the axes z<sub>1</sub> and z<sub>2</sub> can help to most succintly capture really what are the two main dimensions of the variations amongst different countries.
 
 # Principal Component Analysis Problem Formulation
+For the Dimensionality Reduction, by far the most popular by far the most commonly used algorithm is something called Principal Component Analysis, or PCA.
+Let's try to forulate precisely, exactly what we would like PCA to do. Let's say we have a dataset like this, and we want to reduce the dimension of the data from two dimensional to one-dimensional.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/56b69dd1-b708-49fa-a3be-1ecbac1d4ab8)
+
+In other words, I would like to find a line onto which to project the data. Line in the picture seems pretty good choice and the reason is projection of the data on the line is pretty small.
+
+So what **PCA does formally is, it tries to find a lower dimensional surface, really a line in this case onto which to project the data so that the sum of squares of these little blue line segments is minimized**. The length of those blue line segments, that's sometimes also called the projection error.
+
+Befor applying PCA it's standard practice to first perform mean normalization at feature scaling so that the features x1 and x2 should have zero mean, and should have comparable ranges of values.
+
+In contrast to redline that we just draw we can draw a different line onto which we could project our data, the magenta line in below pic is much worse direction. If we project our data onto magenta line, projection errors will be huge.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6a42cd8d-a406-4c74-8b1b-2e19872c6f5d)
+
+So PCA will choose something like red line rather than magenta line.
+
+## More formal definition
+The goal of PCA, if we want to reduce data from 2-D to 1-D is, we are going to try find a vector that is vector u<sup(1)</sup> which is going to be a R<sup>n</sup>, so that would be an R<sup2</sup> in this case. Either PCA gices us +u<sup(1)</sup> or -u<sup(1)</sup> both would be fine. Because each of these vectors define the same red line.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/37ffe20a-8340-4228-b43d-6c41b8089eb8)
+
+So this is the case of reducing data from 2-D to 1-D. In the more general case, we have n-dimensional data and we want to reduce it to k-dimension. In that case we not just want to find a single vector onto which to project the data but we want to find k-dimensions onto which to project the data, so as to minimize the projection error.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fa494ff3-5260-4e54-ada5-29c08263f201)
+
+So in above picture we define 2-D vectors u<sup(1)</sup> and u<sup(2)</sup> onto which we are going to project our data.
+
+So below are formal definitions:
+Reduce from 2-D to 1-D: Find a direction (a vector u<sup(1)</sup> belongs to R<supn</sup>) onto which to project the data so as to minimize the projection error.
+Reduce from n-D to k-D: Fin k vectors u<sup(1)</sup>, u<sup(2)</sup>, ...., u<sup(k)</sup> onto which to project the data, so as to minimize the projection error.
+
+# PCA is not Linear Regression
+Despite some cosmetic similarities these are totally different algorithms.
+In Linear Regression what we are doing is fitting a straight line so as to minimize the square error between the point and the straight line. SO square magnitude of blue lines into the below left pic.
+
+Wheareas in PCA, it tries to minimize the maginitude of projections shown as blue line in bottom right pic.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ba5adca4-6b33-49ff-b5f7-53071f758622)
+
+And more generally, when you are doing Linear Regression, there is this distinguished variable y that we are trying to predict. Whereas in PCA there is no distinguish or special variable y that we are trying to predict. Instead we have a list of features x1, x2 and so on upto xn and all of these features are treated equally, so no one of them is special.
+
+As one last example if we have 3-D data and we want to reduce data to 2-D i.e. we want to fin two directions u<sup(1)</sup>, u<sup(2)</sup> onto which to project our data. then what we have is, we have three features x1, x2, x3 and all of these are treated alike and there is no special variable y that we are trying to predict.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/0cac84e6-b94b-4415-bcb1-0c8f0eb82631)
+
