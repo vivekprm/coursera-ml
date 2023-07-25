@@ -183,3 +183,48 @@ Think of this from the perspective of t-shirt business and ask if I have five se
 How happy my customers will be? What really makes sense from the perspective of t-shirt business.
 
 So we see how a downstream purpose can give us an evaluation metric for choosing the number of clusters.
+
+# Motivation
+## Dimensionality Reduction: Data Compression
+Dimensionality reduction is Unsupervised Learning problem. There are couple of reasons one might want to do Dimensionality Reduction:
+- Data Compression
+  - It not only allows us to compress the data but it also allows us to speedup our learning algorithms.
+
+Let's talk about Dimensionality Reduction. As a motivating example, let's say we have collected a dataset with many, many, many,.. features and we have plotted just two of them here. And let's say unknown to us two of the features were actually the length of something in centimeters and a different feature x2 is the length of the same thing in inches. So this gives us highly redundant representation and may be instead of having two separate features x1 and x2 both of which basically measure the length may be what we want to do is reduce the data to one dimensional and just have one number measuring this lenght.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/ec3cbe22-16b5-4ba7-8ff6-579c9d23fed0)
+
+If you have 100s or 1000s of features, it's often easy to lose track of exactly what features you have. And sometimes you may have few different engineering teams, may be one engineering team gives you 200 features, second engineering team gives you another 300 features and the third engineering teams gives us 500 features. So you have 1000 features all together and it actually become hard to keep track of exactly which feature you got from which team, and it's not hard to get highly redundant features like this.
+
+Bottomline is, if you have higly corelated features, may be you want to reduce the dimension. What do we mean by reducing dimension from 2D to 1D. Let's color the example above in different colours. And in this case by reducing the dimension what we mean is that we would like to find a direction a line on which most of the data seems to lie and project all the data onto that line and by doing so what we can do is just measure the position of each of the examples on that line and what we can do is, comeup with new feature z1, and to specify the position on the line we need only one number. So z1 is the new features that specifies the location of each of those points on green line.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/35d5d675-65b9-4459-9d9d-cfb0139e6892)
+
+So this is an approximation to the original training set because we have projected all of our training examples onto a line but now we need to keep around only one number for each of our examples. So this halves the memory requirement, or a space requirement for how to store our data. Later we will see this will allow us to run our learning algorithms quickly as well.
+
+Let's look at reducing 3D data to 2D. In more practical examples we might have 1000D data and we may want to reduce it to 100D. In this case we project all our data to a 2D plane.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/03718032-93c0-46f8-9283-446d9a873b62)
+
+## Motivation II: Visualization
+Second application of Dimensionality Reduction is to Visualize the data. For lots of machine learning applications, it really helps us to develop effective learning algorithms, if we can understand our data better and so Dimensionality Reduction offers us, often, another useful tool to do so. Let's start with an example:
+
+Let's say we have collected a large dataset of many statistics and facts about different countries around the world.
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/6619ff24-027b-4aae-87ef-87f2fddfd988)
+
+We may have huge a dataset like this, where, you know, may be 50 features for every country, and we have huge set of countries. So is there something we can do to understand our data better?
+We have been given this huge table of numbers. How do we visualize this data? If it has 50 features, it's very difficult to plot 50 dimensional data. So what's a good way to examine this data?
+Using dimensionality reduction, what we can do is, instead of having each country represented by this feature vector x<sup>(i)</sup> which is 50 dimensional, so instead of, say, having a country like Canada instead of having 50 numbers to represent the features of Canada, let's say we can comeup with a different feature representation:
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/a47169f7-5f89-46a9-820b-3b05c24777af)
+
+So you can plot this as 2-D plot and when you do that it turns out that, if you look at the output of the Dimensionality Reduction Algorithms, it usually doesn't strive a physical meaning to these new features z<sub>1</sub> & z<sub>2</sub>. It's often upto us to figure out you know, roughly what these features means. 
+
+If you plot these features, here is what you might find. Here very country is represented by a point z<sup>(i)</sup> which is an R<sup>2</sup>. So each of the dots in below figure represents a country 
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/cd22ebf0-76ed-4d48-bf83-145b9009eb01)
+
+You might find that the axes z<sub>1</sub> and z<sub>2</sub> can help to most succintly capture really what are the two main dimensions of the variations amongst different countries.
+
+# Principal Component Analysis Problem Formulation
