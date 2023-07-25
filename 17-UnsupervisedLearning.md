@@ -170,4 +170,16 @@ If you apply the Elbow method and get a plot as above then that's pretty good an
 And if you look at this there is no clear elbow. So it makes it harder to choose number of cluster using this method in such cases.
 
 Finally here is one other way of thinking about how you choose the value of K. 
-Very often people are running k-means in order to get clusters for some later purpose or for some sort of downstream purpose. May be we want to use K-means in order to do Market Segmentation like in the t-shirt sizing example. May be you want k-means to organize a computer cluster    
+Very often people are running k-means in order to get clusters for some later purpose or for some sort of downstream purpose. 
+May be we want to use K-means in order to do Market Segmentation like in the t-shirt sizing example. May be you want k-means to organize a computer cluster better.   
+
+It's better to see how well the number of cluster serves that downstream purpose while choosing the number of cluster.
+
+Let's look at t-shirt size example again and I am trying to decide if I want 3 t-shirt sizes (S, M, L) or 5 (XS, S, M, L, XL). If we run k-means for K=3 or K=5
+
+![image](https://github.com/vivekprm/coursera-ml/assets/2403660/fbdce2af-2ca5-4131-8422-138dd519f682)
+
+Think of this from the perspective of t-shirt business and ask if I have five segments, how well my t-shirts fit my customers and so, how many t-shirts can I sell?
+How happy my customers will be? What really makes sense from the perspective of t-shirt business.
+
+So we see how a downstream purpose can give us an evaluation metric for choosing the number of clusters.
